@@ -36,6 +36,30 @@ static int cmd_q(char *args) {
 	return -1;
 }
 
+static int cmd_si(char *args) {
+	return -1;
+}
+
+static int cmd_info(char *args) {
+	return -1;
+}
+
+static int cmd_p(char *args) {
+	return -1;
+}
+
+static int cmd_x(char *args) {
+	return -1;
+}
+
+static int cmd_w(char *args) {
+	return -1;
+}
+
+static int cmd_d(char *args) {
+	return -1;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -46,9 +70,14 @@ static struct {
 	{ "help", "Display informations about all supported commands", cmd_help },
 	{ "c", "Continue the execution of the program", cmd_c },
 	{ "q", "Exit NEMU", cmd_q },
-
 	/* TODO: Add more commands */
 
+	{ "si", "Single execution", cmd_si},
+	{ "info", "Print informations of registers or watch points", cmd_info},
+	{ "p", "Expression evaluation", cmd_p},
+	{ "x", "Scan memory", cmd_x},
+	{ "w", "Set a watch point", cmd_w},
+	{ "d", "Delete a watch point", cmd_d}
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))
