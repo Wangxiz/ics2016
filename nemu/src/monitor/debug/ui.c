@@ -37,7 +37,14 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args) {
-	return -1;
+	char *arg = strtok(NULL, " ");
+	int steps;
+	if(arg == NULL) steps = 1;
+	else {
+		steps = atoi(arg);
+	}
+	cpu_exec(steps);
+	return 0;
 }
 
 static int cmd_info(char *args) {
@@ -73,7 +80,7 @@ static struct {
 	/* TODO: Add more commands */
 
 	{ "si", "Single execution", cmd_si},
-	{ "info", "Print informations of registers or watch points", cmd_info},
+	{ "info", "Print informations about registers or watch points", cmd_info},
 	{ "p", "Expression evaluation", cmd_p},
 	{ "x", "Scan memory", cmd_x},
 	{ "w", "Set a watch point", cmd_w},
