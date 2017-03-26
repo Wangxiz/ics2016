@@ -38,16 +38,9 @@ static int cmd_q(char *args) {
 
 static int cmd_si(char *args) {
 	char *arg = strtok(NULL, " ");
-	int steps, i;
+	int steps;
 	if(arg == NULL) steps = 1;
 	else {
-		for(i = 0; i < strlen(arg); ++i) {
-			if(arg[i] < '0' || arg[i] > '9') {
-				break;
-			}
-			steps = steps * 10 + arg[i] - '0';
-		}
-		if(i < strlen(arg)) return 0;
 		steps = atoi(arg);
 	}
 	cpu_exec(steps);
