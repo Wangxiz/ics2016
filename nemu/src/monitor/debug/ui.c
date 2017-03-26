@@ -49,7 +49,6 @@ static int cmd_si(char *args) {
 		}
 		if(i < strlen(arg)) return 0;
 	}
-//	if(steps == 0) steps = 1;
 	cpu_exec(steps);
 	return 0;
 }
