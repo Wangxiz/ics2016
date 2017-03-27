@@ -137,7 +137,7 @@ uint32_t expr(char *e, bool *success) {
 	}
 
 	/* TODO: Insert codes to evaluate the expression. */
-
+	*success = true;
 //	panic("please implement me");
 	return 1024;
 }
