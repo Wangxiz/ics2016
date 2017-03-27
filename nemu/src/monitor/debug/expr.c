@@ -186,6 +186,7 @@ uint32_t my_atoi(char *arg) {
 
 uint32_t my_htoi(char *arg) {
 	uint32_t val = 0, i;
+	printf("arg:%s\n",arg);
 	for(i = 0; i < strlen(arg); ++i) {
 		if(arg[i] >= '0' && arg[i] <= 9)
 			val = val * 16 + arg[i] - '0';
