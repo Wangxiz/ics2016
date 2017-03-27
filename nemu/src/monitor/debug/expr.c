@@ -240,11 +240,12 @@ uint32_t eval(int p, int q) {
 	else {
 		// op = the position of dominant operator in the token expression;
 		uint32_t op = get_dominantop(p, q);
-		printf("op:%d\n", op);
-		assert(tokens[op].type == DR);
+	//	printf("op:%d\n", op);
+	//	assert(tokens[op].type == DR);
 		uint32_t val1 = 0, val2 = 0;
 		if(tokens[op].type == NOT || tokens[op].type == NS || tokens[op].type == DR) {
 			val1 = eval(op + 1, q);
+			printf("addr:%x\n",val1);
 		}
 		else {
 			val1 = eval(p, op - 1);
