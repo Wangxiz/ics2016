@@ -9,6 +9,9 @@
 
 void cpu_exec(uint32_t);
 
+uint32_t my_atoi(char *arg);
+uint32_t my_htoi(char *arg);
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
 	static char *line_read = NULL;
@@ -88,7 +91,23 @@ static int cmd_p(char *args) {
 }
 
 static int cmd_x(char *args) {
-	return -1;
+	if(args == NULL) return 0;
+	char *arg = strtok(NULL, " ");
+	if(arg == NULL) return 0;
+	int i, offset = 0;
+	for(i = 0; i < strlen(arg); ++i) {
+		if(i > '9' || i < '0') return 0;
+		offset = offset * 10 + arg[i] - '0';
+	}
+	arg = strtok(NULL, " ");
+	bool isvalid_expr = false;
+	uint32_t addr = expr(arg, &isvalid_expr);
+	if(isvalid_expr) {
+		for(i = 0; i < offset; ++i) {
+			printf("%d\t%08x\n", i, swaddr_read(addr + i, 1));
+		}
+	}
+	return 0;
 }
 
 static int cmd_w(char *args) {

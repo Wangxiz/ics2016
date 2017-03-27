@@ -176,7 +176,7 @@ uint32_t get_dominantop(int p, int q) {
 	return 0;
 }
 
-uint32_t atoi(char *arg) {
+uint32_t my_atoi(char *arg) {
 	uint32_t val = 0, i;
 	for(i = 0; i < strlen(arg); ++i) {
 		val = val * 10 + arg[i] - '0';
@@ -184,7 +184,7 @@ uint32_t atoi(char *arg) {
 	return val;
 }
 
-uint32_t htoi(char *arg) {
+uint32_t my_htoi(char *arg) {
 	uint32_t val = 0, i;
 	for(i = 0; i < strlen(arg); ++i) {
 		if(arg[i] >= '0' && arg[i] <= 9)
@@ -228,10 +228,10 @@ uint32_t eval(int p, int q) {
 			}
 		}
 		else if(tokens[p].type == DEC) {
-			return atoi(tokens[p].str);
+			return my_atoi(tokens[p].str);
 		}
 		else if(tokens[p].type == HEX) {
-			return htoi(tokens[p].str + 2);
+			return my_htoi(tokens[p].str + 2);
 		}
 		return val;
 	}
