@@ -194,6 +194,7 @@ uint32_t my_htoi(char *arg) {
 		else if(arg[i] >= 'A' && arg[i] <= 'F')
 			val = val * 16 + arg[i] - 'A';
 	}
+	printf("htoi:%d\n",val);
 	return val;
 }
 
