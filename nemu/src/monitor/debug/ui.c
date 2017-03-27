@@ -50,7 +50,6 @@ static int cmd_si(char *args) {
 		if(i < strlen(arg)) return 0;
 	}
 	cpu_exec(steps);
-	printf("Hello\n");
 	return 0;
 }
 
