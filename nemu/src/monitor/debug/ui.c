@@ -100,6 +100,7 @@ static int cmd_x(char *args) {
 		if(i > '9' || i < '0') return 0;
 		offset = offset * 10 + arg[i] - '0';
 	}
+	printf("%d\n",offset);
 	arg = strtok(NULL, " ");
 	bool isvalid_expr = false;
 	uint32_t addr = expr(arg, &isvalid_expr);
