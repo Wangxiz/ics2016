@@ -95,6 +95,7 @@ static int cmd_x(char *args) {
 	char *arg = strtok(NULL, " ");
 	if(arg == NULL) return 0;
 	int i, offset = 0;
+	printf("%s\n", arg);
 	for(i = 0; i < strlen(arg); ++i) {
 		if(i > '9' || i < '0') return 0;
 		offset = offset * 10 + arg[i] - '0';
