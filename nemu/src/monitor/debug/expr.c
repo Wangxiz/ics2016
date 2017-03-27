@@ -212,9 +212,9 @@ uint32_t eval(int p, int q) {
 		uint32_t val = 0;
 		if(tokens[p].type == REG) {
 			char *reg = tokens[p].str + 1;
-			printf("%s\n", reg);
+//			printf("%s\n", reg);
 			if(strcmp(reg, "eip") == 0) {
-				printf("eip:%d\n",cpu.eip);
+//				printf("eip:%d\n",cpu.eip);
 				return cpu.eip;
 			}
 			else {
