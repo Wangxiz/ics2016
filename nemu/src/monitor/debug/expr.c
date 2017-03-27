@@ -104,7 +104,7 @@ static bool make_token(char *e) {
 
 				switch(rules[i].token_type) {
 					case '+': case '/': case AND: case OR: case NOT:
-					case EQ: case NE: case '(': case ')': break;
+					case EQ: case NE: case LE: case GE: case LT: case GT: case '(': case ')': break;
 					case '-':
 						if(nr_token == 0 || !(tokens[nr_token - 1].type == ')' || tokens[nr_token - 1].type == DEC || tokens[nr_token - 1].type == HEX || tokens[nr_token - 1].type == REG)) {
 							tokens[nr_token].type = NS;
