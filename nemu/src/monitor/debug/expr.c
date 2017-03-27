@@ -200,7 +200,7 @@ uint32_t htoi(char *arg) {
 uint32_t eval(int p, int q) {
 	if(p > q) {
 		/* Bad expression */
-		printf("Bad expression.\n");
+//		printf("Bad expression.\n");
 //		assert(0);
 		return 0;
 	}
@@ -213,6 +213,7 @@ uint32_t eval(int p, int q) {
 		if(tokens[p].type == REG) {
 			char *reg = tokens[p].str + 1;
 			if(strcmp(reg, "eip") == 0) {
+				printf("eip:%d\n",cpu.eip);
 				return cpu.eip;
 			}
 			else {
