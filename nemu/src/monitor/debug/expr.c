@@ -31,8 +31,8 @@ static struct rule {
 	{"/", '/', 4},						// division			->
 	{"\\(", '(', 1},					// left par			->
 	{"\\)", ')', 1},					// right par		->
-	{"[0-9]+", DEC, 1},					// dec numbers		->
 	{"0[xX][0-9a-fA-F]+", HEX, 1},		// hex numbers		->
+	{"[0-9]+", DEC, 1},					// dec numbers		->
 	{"==", EQ, 7},						// equal			->
 	{"!=", NE, 7},						// not equal		->
 	{"<=", LE, 6},						// less or equal	->
