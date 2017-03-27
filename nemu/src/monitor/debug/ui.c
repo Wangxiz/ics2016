@@ -84,7 +84,7 @@ static int cmd_p(char *args) {
 			printf("\tHEX:\t0x%08x\n", val);
 		}
 	}
-	return -1;
+	return 0;
 }
 
 static int cmd_x(char *args) {
