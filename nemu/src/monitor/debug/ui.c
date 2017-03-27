@@ -80,8 +80,8 @@ static int cmd_p(char *args) {
 		bool isvalid_expr = false;
 		uint32_t val = expr(arg, &isvalid_expr);
 		if(isvalid_expr) {
-			printf("DEC:\t%u\n", val);
-			printf("HEX:\t0x%08x\n", val);
+			printf("\tDEC:\t%u\n", val);
+			printf("\tHEX:\t0x%08x\n", val);
 		}
 	}
 	return 0;
