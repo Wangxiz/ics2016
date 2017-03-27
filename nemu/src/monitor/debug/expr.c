@@ -186,7 +186,6 @@ uint32_t my_atoi(char *arg) {
 
 uint32_t my_htoi(char *arg) {
 	uint32_t val = 0, i;
-	printf("arg:%s\n",arg);
 	for(i = 0; i < strlen(arg); ++i) {
 		if(arg[i] >= '0' && arg[i] <= '9')
 			val = val * 16 + arg[i] - '0';
@@ -195,15 +194,12 @@ uint32_t my_htoi(char *arg) {
 		else if(arg[i] >= 'A' && arg[i] <= 'F')
 			val = val * 16 + arg[i] - 'A';
 	}
-	printf("htoi:%d\n",val);
 	return val;
 }
 
 uint32_t eval(int p, int q) {
 	if(p > q) {
 		/* Bad expression */
-//		printf("Bad expression.\n");
-//		assert(0);
 		return 0;
 	}
 	else if(p == q) { 
@@ -214,9 +210,7 @@ uint32_t eval(int p, int q) {
 		uint32_t val = 0;
 		if(tokens[p].type == REG) {
 			char *reg = tokens[p].str + 1;
-//			printf("%s\n", reg);
 			if(strcmp(reg, "eip") == 0) {
-//				printf("eip:%d\n",cpu.eip);
 				return cpu.eip;
 			}
 			else {
@@ -233,7 +227,6 @@ uint32_t eval(int p, int q) {
 			return my_atoi(tokens[p].str);
 		}
 		else if(tokens[p].type == HEX) {
-			printf("%s\n", tokens[p].str + 2);
 			return my_htoi(tokens[p].str + 2);
 		}
 		return val;
@@ -247,7 +240,6 @@ uint32_t eval(int p, int q) {
 	else {
 		// op = the position of dominant operator in the token expression;
 		uint32_t op = get_dominantop(p, q);
-		printf("op:%d\n",op);
 		uint32_t val1 = 0, val2 = 0;
 		if(tokens[op].type == NOT || tokens[op].type == NS || tokens[op].type == DR) {
 			val1 = eval(op + 1, q);
