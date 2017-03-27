@@ -104,7 +104,7 @@ static bool make_token(char *e) {
 
 				switch(rules[i].token_type) {
 					case '+': case '/': case AND: case OR: case NOT:
-					case EQ: case NE: case '(': case ')': case REG: break;
+					case EQ: case NE: case '(': case ')': break;
 					case '-':
 						if(nr_token == 0 || !(tokens[nr_token - 1].type == ')' || tokens[nr_token - 1].type == DEC || tokens[nr_token - 1].type == HEX || tokens[nr_token - 1].type == REG)) {
 							tokens[nr_token].type = NS;
@@ -117,7 +117,7 @@ static bool make_token(char *e) {
 							tokens[nr_token].op_level = 2;
 						}
 						break;
-					case DEC: case HEX:
+					case DEC: case HEX: case REG:
 						strncpy(tokens[nr_token].str, substr_start, substr_len);
 						tokens[nr_token].str[substr_len] = '\0';
 						break;
