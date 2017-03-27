@@ -72,7 +72,19 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_p(char *args) {
-	return -1;
+	char *arg = strtok(NULL, " ");
+	if(arg == NULL) {
+		return 0;
+	}
+	else {
+		bool isvalid_expr = false;
+		uint32_t val = expr(arg, &isvalid_expr);
+		if(isvalid_expr) {
+			printf("DEC:\t%u\n", val);
+			printf("HEX:\t0x%08x\n", val);
+		}
+	}
+	return 0;
 }
 
 static int cmd_x(char *args) {

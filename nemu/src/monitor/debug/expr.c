@@ -7,10 +7,10 @@
 #include <regex.h>
 
 enum {
-	NOTYPE = 256, EQ
+	NOTYPE = 256,
 
 	/* TODO: Add more token types */
-
+	DEC, HEX, EQ, NE, AND, OR, NOT, REG, NS, DR
 };
 
 static struct rule {
@@ -24,7 +24,21 @@ static struct rule {
 
 	{" +",	NOTYPE},				// spaces
 	{"\\+", '+'},					// plus
-	{"==", EQ}						// equal
+	{"-", '-'},						// minus
+	{"\\*", '*'},					// multiplication
+	{"/", '/'},						// division
+	{"\\(", '('},					// left par
+	{"\\)", ')'},					// right par
+	{"[0-9]+", DEC},				// dec numbers
+	{"0[xX][0-9a-fA-F]+", HEX},		// hex numbers
+	{"==", EQ},						// equal
+	{"!=", NE},						// not equal
+	{"&&", AND},					// and
+	{"\\|\\|", OR},					// or
+	{"!", NOT},						// not
+	{"\\$eax|\\$edx|\\$ecx|\\$ebx|\\$ebp|\\$esi|\\$edi|\\$esp|\\$ax|\\$dx|\\$cx|\\$bx|\\$bp|\\$si|\\$di|\\$sp|\\$ah|\\$dh|\\$ch|\\$bh|\\$al|\\$dl|\\$cl|\\$bl|\\$eip", REG},	// registers
+	{"-", NS},						// negative sign
+	{"\\*", DR}						// dereference
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -77,11 +91,32 @@ static bool make_token(char *e) {
 				 * to record the token in the array `tokens'. For certain types
 				 * of tokens, some extra actions should be performed.
 				 */
+				
+				tokens[nr_token].type = rules[i].token_type;
 
 				switch(rules[i].token_type) {
+					case '+': case '/': case AND: case OR: case NOT:
+					case EQ: case NE: case '(': case ')': case REG: break;
+					case '-':
+						if(nr_token == 0 || !(tokens[nr_token - 1].type == ')' || tokens[nr_token - 1].type == DEC || tokens[nr_token - 1].type == HEX || tokens[nr_token - 1].type == REG)) {
+							tokens[nr_token].type = NS;
+						}
+						break;
+					case '*':
+						if(nr_token == 0 || !(tokens[nr_token - 1].type == ')' || tokens[nr_token - 1].type == DEC || tokens[nr_token - 1].type == HEX || tokens[nr_token - 1].type == REG)) {
+							tokens[nr_token].type = DR;
+						}
+						break;
+					case DEC: case HEX:
+						strncpy(tokens[nr_token].str, substr_start, substr_len);
+						tokens[nr_token].str[substr_len] = '\0';
+						break;
+					case NOTYPE:
+						nr_token--;
+						break;
 					default: panic("please implement me");
 				}
-
+				nr_token++;
 				break;
 			}
 		}
@@ -102,7 +137,8 @@ uint32_t expr(char *e, bool *success) {
 	}
 
 	/* TODO: Insert codes to evaluate the expression. */
+
 	panic("please implement me");
-	return 0;
+	return 1024;
 }
 
