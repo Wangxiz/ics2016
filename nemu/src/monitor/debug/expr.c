@@ -169,8 +169,8 @@ uint32_t get_dominantop(int p, int q) {
 				while(i > p && tokens[i - 1].op_level == max_level) {
 					i--;
 				}
-				return i;
 			}
+			return i;
 		}
 	}
 	return 0;
