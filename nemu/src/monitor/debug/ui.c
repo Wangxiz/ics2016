@@ -97,7 +97,7 @@ static int cmd_x(char *args) {
 	int i, offset = 0;
 	printf("%s\n", arg);
 	for(i = 0; i < strlen(arg); ++i) {
-		if(i > '9' || i < '0') return 0;
+		if(arg[i] > '9' || arg[i] < '0') return 0;
 		offset = offset * 10 + arg[i] - '0';
 	}
 	printf("offset:%d\n",offset);
