@@ -104,7 +104,7 @@ static int cmd_x(char *args) {
 	uint32_t addr = expr(arg, &isvalid_expr);
 	if(isvalid_expr) {
 		for(i = 0; i < offset; ++i) {
-			printf("%d\t%08x\n", i, swaddr_read(addr + 4 * i, 4));
+			printf("0x%08x\t0x%08x\n", addr + 4 * i, swaddr_read(addr + 4 * i, 4));
 		}
 	}
 	return 0;
