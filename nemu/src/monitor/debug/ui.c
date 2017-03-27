@@ -54,6 +54,16 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_info(char *args) {
+	char *arg = strtok(NULL, " ");
+	if(strcmp(arg, "r") == 0) {
+		printf("eax\t%x\t%d", cpu.gpr[R_EAX]._32, cpu.gpr[R_EAX]._32);
+	}
+	else if(strcmp(arg, "w") == 0) {
+	
+	}
+	else {
+	
+	}
 	return -1;
 }
 
