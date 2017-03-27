@@ -58,9 +58,9 @@ static int cmd_info(char *args) {
 	if(strcmp(arg, "r") == 0) {
 		int i;
 		for(i = 0; i < 8; i++) {
-			printf("%s\t0x%8x\t%d\n", regsl[i], cpu.gpr[i]._32, cpu.gpr[i]._32);
+			printf("%s\t0x%08x\t%d\n", regsl[i], cpu.gpr[i]._32, cpu.gpr[i]._32);
 		}
-		printf("eip\t0x%8x\t%d\n", cpu.eip, cpu.eip);
+		printf("eip\t0x%08x\t%d\n", cpu.eip, cpu.eip);
 	}
 	else if(strcmp(arg, "w") == 0) {
 	
