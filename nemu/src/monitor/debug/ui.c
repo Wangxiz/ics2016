@@ -72,13 +72,13 @@ static int cmd_info(char *args) {
 }
 
 static int cmd_p(char *args) {
-	char *arg = strtok(NULL, " ");
-	if(arg == NULL) {
+//	char *arg = strtok(NULL, " ");
+	if(args == NULL) {
 		return 0;
 	}
 	else {
 		bool isvalid_expr = false;
-		uint32_t val = expr(arg, &isvalid_expr);
+		uint32_t val = expr(args, &isvalid_expr);
 		if(isvalid_expr) {
 			printf("\tDEC:\t%u\n", val);
 			printf("\tHEX:\t0x%08x\n", val);
