@@ -231,7 +231,7 @@ uint32_t eval(int p, int q) {
 			return my_atoi(tokens[p].str);
 		}
 		else if(tokens[p].type == HEX) {
-			printf("%s\n", tokens[p].str);
+			printf("%s\n", tokens[p].str + 2);
 			return my_htoi(tokens[p].str + 2);
 		}
 		return val;
