@@ -95,18 +95,16 @@ static int cmd_x(char *args) {
 	char *arg = strtok(NULL, " ");
 	if(arg == NULL) return 0;
 	int i, offset = 0;
-	printf("%s\n", arg);
 	for(i = 0; i < strlen(arg); ++i) {
 		if(arg[i] > '9' || arg[i] < '0') return 0;
 		offset = offset * 10 + arg[i] - '0';
 	}
-	printf("offset:%d\n",offset);
 	arg = strtok(NULL, " ");
 	bool isvalid_expr = false;
 	uint32_t addr = expr(arg, &isvalid_expr);
 	if(isvalid_expr) {
 		for(i = 0; i < offset; ++i) {
-			printf("%d\t%08x\n", i, swaddr_read(addr + i, 1));
+			printf("%d\t%08x\n", i, swaddr_read(addr + 4 * i, 4));
 		}
 	}
 	return 0;
