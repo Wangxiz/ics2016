@@ -39,8 +39,8 @@ make_helper(concat(decode_si_, SUFFIX)) {
     signed char si;
 #elif DATA_BYTE == 4
     int si;
-//#else   
-//#error unknown DATA_BYTE
+#else   
+#error unknown DATA_BYTE
 #endif
     
 
