@@ -94,7 +94,7 @@ void check_wp(int *state) {
 	while(wp != NULL) {
 		cur_value = expr(wp->exp, &isvalid_expr);
 		if(cur_value != wp->last_value) {
-			printf("**WATCHPOINT WARNING** The value of : [%s] is changed!\n", wp->exp);
+			printf("\033[1;31;40m**WATCHPOINT WARNING** The value of : [%s] is changed!\033[0m\n", wp->exp);
 			wp->last_value = cur_value;
 			*state = STOP;
 		}
