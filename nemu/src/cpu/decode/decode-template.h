@@ -32,7 +32,24 @@ make_helper(concat(decode_si_, SUFFIX)) {
 	 *
 	op_src->simm = ???
 	 */
-	panic("please implement me");
+
+	//panic("please implement me");
+//	uint32_t val = instr_fetch(eip, DATA_BYPE);
+#if DATA_BYTE == 1
+    signed char si;
+#elif DATA_BYTE == 4
+    int si;
+//#else   
+//#error unknown DATA_BYTE
+#endif
+    
+
+    uint32_t mask = op_dest->size < 4 ? (1 << (op_dest->size * 8)) - 1 : 0xffffffff;
+//    printf("op->size=%d mask=%x\n", (int) op_dest->size, mask);
+	si = instr_fetch(eip, DATA_BYTE);
+	op_src->simm = (uint32_t)((int) si) & mask;
+
+//	op_src->simm = 
 
 	op_src->val = op_src->simm;
 
