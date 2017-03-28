@@ -110,7 +110,7 @@ void print_wp() {
 	else {
 		WP* wp = head;
 		while(wp != NULL) {
-			printf("#%d:\t%s = 0x%08x\n = %d\n", wp->NO, wp->exp, wp->last_value, wp->last_value);
+			printf("#%d:\t%s = 0x%08x\n\t= %d\n", wp->NO, wp->exp, wp->last_value, wp->last_value);
 			wp = wp->next;
 		}
 	}
