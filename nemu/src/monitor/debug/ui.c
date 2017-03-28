@@ -14,6 +14,7 @@ uint32_t my_htoi(char *arg);
 
 void new_wp(char* exp);
 void free_wp(int index);
+void print_wp();
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
@@ -72,7 +73,7 @@ static int cmd_info(char *args) {
 		printf("eip\t0x%08x\t%d\n", cpu.eip, cpu.eip);
 	}
 	else if(strcmp(arg, "w") == 0) {
-		printf("watch points\n");
+		print_wp();
 	}
 	return 0;
 }
