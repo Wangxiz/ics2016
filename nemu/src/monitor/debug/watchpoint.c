@@ -70,6 +70,13 @@ void free_wp(int index) {
 		while(q->next != wp) q = q->next;
 		q->next = wp->next;
 	}
+
+	WP* q = wp->next;
+	while(q != NULL) {
+		q->NO--;
+		q = q->next;
+	}
+
 	if(free_ == NULL) {
 		free_ = wp;
 		wp->next = NULL;
