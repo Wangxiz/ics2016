@@ -63,11 +63,13 @@ void free_wp(int index) {
 		printf("There is no watchpoint with index = %d.\n", index);
 		assert(0);
 	}
-
-	WP* q = head;
-	while(q->next != wp) q = q->next;
-	q->next = wp->next;
-
+	
+	if(wp == head) head = head->next;
+	else {
+		WP* q = head;
+		while(q->next != wp) q = q->next;
+		q->next = wp->next;
+	}
 	if(free_ == NULL) {
 		free_ = wp;
 		wp->next = NULL;
