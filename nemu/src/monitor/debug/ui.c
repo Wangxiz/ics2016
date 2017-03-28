@@ -44,17 +44,13 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args) {
-	char *arg = strtok(NULL, " ");
 	int steps = 0, i;
-	if(arg == NULL) steps = 1;
+	if(args == NULL) steps = 1;
 	else {
-		for(i = 0; i < strlen(arg); ++i) {
-			if(arg[i] < '0' || arg[i] > '9') {
-				break;
-			}
-			steps = steps * 10 + arg[i] - '0';
+		for(i = 0; i < strlen(args); ++i) {
+			if(args[i] < '0' || args[i] > '9') return 0;
+			steps = steps * 10 + args[i] - '0';
 		}
-		if(i < strlen(arg)) return 0;
 	}
 	cpu_exec(steps);
 	return 0;
