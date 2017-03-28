@@ -12,6 +12,9 @@ void cpu_exec(uint32_t);
 uint32_t my_atoi(char *arg);
 uint32_t my_htoi(char *arg);
 
+void new_wp(char* exp);
+void free_wp(int index);
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
 	static char *line_read = NULL;
@@ -112,11 +115,25 @@ static int cmd_x(char *args) {
 }
 
 static int cmd_w(char *args) {
-	return -1;
+	if(args == NULL) return 0;
+	
+	bool isvalid_expr = false;
+	expr(args, &isvalid_expr);
+	if(!isvalid_expr) return 0;
+	
+	new_wp(args);
+	return 0;
 }
 
 static int cmd_d(char *args) {
-	return -1;
+	if(args == NULL) return 0;
+	int index = 0, i;
+	for(i = 0; i < strlen(args); ++i) {
+		if(args[i] > '9' || args[i] < '0') return 0;
+		index = index * 10 + args[i] - '0';
+	}
+	free_wp(index);
+	return 0;
 }
 
 static int cmd_help(char *args);
