@@ -77,6 +77,7 @@ static void load_entry() {
 void restart() {
 	/* Perform some initialization to restart a program */
 	cpu.EFLAGS = 0x2;
+	
 #ifdef USE_RAMDISK
 	/* Read the file with name `argv[1]' into ramdisk. */
 	init_ramdisk();
