@@ -4,7 +4,7 @@
 
 static void do_execute() {
 	cpu.esp -= DATA_BYTE;
-	MEM_W(cpu.esp, cpu.eip + DATA_BYTE + 1);
+	MEM_W(cpu.esp, cpu.eip + DATA_BYTE);
 	printf("ESP:%x\n", MEM_R(cpu.esp));
 	if(DATA_BYTE == 4) {
 		cpu.eip += op_src->val;
