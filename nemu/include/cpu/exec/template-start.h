@@ -34,12 +34,15 @@
 
 #define MSB(n) ((DATA_TYPE)(n) >> ((DATA_BYTE << 3) - 1))
 
-#define PF(val) \
+#define UPDATE_EFLAGS_PF(val) \
 	int i; \
 	cpu.PF = 1; \
 	for(i = 0; i < 8; ++i) cpu.PF ^= (val & (1 << i)) >> i;
-#define SF(val) cpu.SF = MSB(val)
-#define ZF(val) cpu.ZF = (val == 0)
+#define UPDATE_EFLAGS_SF(val) cpu.SF = MSB(val)
+#define UPDATE_EFLAGS_ZF(val) cpu.ZF = (val == 0)
 
 #define SUB_CF(n, m) ((n < m) ? (cpu.CF = 1) : (cpu.CF = 0))
 #define SUB_OF(n, m, t) (((MSB(t) ^ MSB(n)) && (MSB(n) ^ MSB(m))) ? (cpu.OF = 1) : (cpu.OF = 0))
+
+#define SET_EFLAGS_CF(val) cpu.CF = val
+#define SET_EFLAGS_OF(val) cpu.OF = val

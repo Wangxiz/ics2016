@@ -4,7 +4,11 @@
 
 static void do_execute() {
 	uint32_t addr = MEM_R(cpu.esp);
-//	printf("%x\n", addr);
+
+#ifdef DEBUG
+	printf("RET ADDRESS:0x%08x\n", addr);
+#endif
+	
 	cpu.esp += 4 + op_src->val;
 	cpu.eip = addr;
 	if(op_src->val == 0) {
