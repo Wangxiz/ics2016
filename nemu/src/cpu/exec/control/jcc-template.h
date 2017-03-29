@@ -4,6 +4,7 @@ extern int len;
 
 #define if_exec() {\
 	cpu.eip += op_src->val;\
+	printf("eip:%08x\n, op_src->val:%d\n", cpu.eip, op_src->val);\
 	snprintf(op_src->str, OP_STR_SIZE, "$0x%x", cpu.eip + len + 1);\
 }
 
