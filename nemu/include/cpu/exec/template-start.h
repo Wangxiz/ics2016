@@ -30,6 +30,14 @@
 #define MEM_R(addr) swaddr_read(addr, DATA_BYTE)
 #define MEM_W(addr, data) swaddr_write(addr, DATA_BYTE, data)
 
+#define MEM_R_DWORD(addr) swaddr_read((addr), 4)
+#define MEM_R_WORD(addr) swaddr_read((addr), 2)
+#define MEM_R_BYTE(addr) swaddr_read((addr), 1)
+
+#define MEM_W_DWORD(addr, data) swaddr_write((addr), 4, (data))
+#define MEM_W_WORD(addr, data) swaddr_write((addr), 2, (data))
+#define MEM_W_BYTE(addr, data) swaddr_write((addr), 1, (data))
+
 #define OPERAND_W(op, src) concat(write_operand_, SUFFIX) (op, src)
 
 #define MSB(n) ((DATA_TYPE)(n) >> ((DATA_BYTE << 3) - 1))
@@ -46,3 +54,10 @@
 
 #define SET_EFLAGS_CF(val) cpu.CF = val
 #define SET_EFLAGS_OF(val) cpu.OF = val
+
+#define PUSH_DWORD(data) ({ cpu.esp -= 4; MEM_W_DWORD(cpu.esp, (data)); })
+#define PUSH_WORD(data) ({ cpu.esp -= 2; MEM_W_WORD(cpu.esp, (data) & 0xffff); })
+#define PUSH_BYTE(data) ({ cpu.esp -= 4; MEM_W_DWORD(cpu.esp, (unsigned) (int) (signed char) ((data) & 0xff)); }) // push BTYE is just push DWORD (sign-extended)
+
+#define POP_DWORD() ({ uint32_t ret = MEM_R_DWORD(cpu.esp); cpu.esp += 4; ret; })
+#define POP_WORD() ({ uint32_t ret = MEM_R_WORD(cpu.esp); cpu.esp += 2; ret; })

@@ -1,7 +1,7 @@
 #include "cpu/exec/template-start.h"
 
 #define instr test
-
+	// tested
 static void do_execute() {
 	DATA_TYPE val = op_src->val & op_dest->val;
 	
