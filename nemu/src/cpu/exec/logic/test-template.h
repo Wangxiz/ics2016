@@ -7,13 +7,13 @@ static void do_execute() {
 	// 	cpu.esp -= 4;
 	// 	MEM_W(cpu.esp, op_src->val);
 	// }
-	op_dest->val = op_src->val & op_src2->val;
+	DATA_TYPE val = op_src->val & op_dest->val;
 	cpu.CF = 0;
 	cpu.OF = 0;
-	PF(op_dest->val);
-	ZF(op_dest->val);
-	SF(op_dest->val);
-	print_asm_template1();
+	PF(val);
+	ZF(val);
+	SF(val);
+	print_asm_template2();
 }
 
 make_instr_helper(r2rm)
