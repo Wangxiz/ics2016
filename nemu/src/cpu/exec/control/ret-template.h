@@ -5,7 +5,7 @@
 static void do_execute() {
 	uint32_t addr = MEM_R(cpu.esp);
 
-#ifdef DEBUG
+#ifdef DEBUG_MY
 	printf("RET ADDRESS:0x%08x\n", addr);
 #endif
 	
