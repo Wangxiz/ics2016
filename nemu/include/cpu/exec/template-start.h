@@ -33,3 +33,10 @@
 #define OPERAND_W(op, src) concat(write_operand_, SUFFIX) (op, src)
 
 #define MSB(n) ((DATA_TYPE)(n) >> ((DATA_BYTE << 3) - 1))
+
+#define PF(val) \
+	int i; \
+	cpu.PF = 1; \
+	for(i = 0; i < 8; ++i) cpu.PF ^= (val & (1 << i)) >> i;
+#define SF(val) cpu.SF = MSB(val)
+#define ZF(val) cpu.ZF = (val == 0)
