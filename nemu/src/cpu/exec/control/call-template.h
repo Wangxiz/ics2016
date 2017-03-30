@@ -17,7 +17,7 @@ static void do_execute() {
 	if(DATA_BYTE == 4) {
 		cpu.eip += op_src->val;
 	}
-	print_asm_template1();
+	print_asm(str(instr) str(SUFFIX) " 0x%x", cpu.eip + len);
 }
 
 make_instr_helper(si)
