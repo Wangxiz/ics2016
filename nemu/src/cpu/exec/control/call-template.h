@@ -4,12 +4,13 @@
 
 /* len: defined in cpu/helper.h */
 extern int len;
-
+// tested
 static void do_execute() {
 	cpu.esp -= DATA_BYTE;
 	MEM_W(cpu.esp, cpu.eip + len);
-	printf("call: eip:0x%08x\n, len: %d\n", cpu.eip, len);
+	
 #ifdef DEBUG_MY
+	printf("call: eip:0x%08x\n, len: %d\n", cpu.eip, len);
 	printf("ESP:%x\n", MEM_R(cpu.esp));
 #endif
 

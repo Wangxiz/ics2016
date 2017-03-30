@@ -1,7 +1,7 @@
 #include "cpu/exec/template-start.h"
 
 #define instr pop
-
+// tested
 static void do_execute() {
 	if(DATA_BYTE == 4) {
 		uint32_t val = MEM_R(cpu.esp);
