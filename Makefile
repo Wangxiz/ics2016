@@ -64,7 +64,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/if-else
 # USERPROG := obj/testcase/gotbaha
 # USERPROG := obj/testcase/max
-USERPROG := obj/testcase/min3
+# USERPROG := obj/testcase/min3
+USERPROG := obj/testcase/sum
 ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
