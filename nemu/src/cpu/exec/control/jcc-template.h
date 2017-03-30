@@ -19,31 +19,31 @@ static void do_execute() { \
 } \
 make_instr_helper(si) 
 
-#define instr je
+#define instr je	/* also jz */
 #define JMPFLAG cpu.ZF == 1
 all_exec();
 #undef JMPFLAG
 #undef instr
 
-#define instr jbe
+#define instr jbe	/* also jna */
 #define JMPFLAG cpu.ZF == 1 || cpu.CF == 1
 all_exec();
 #undef JMPFLAG
 #undef instr
 
-#define instr jne
+#define instr jne	/* also jnz */
 #define JMPFLAG cpu.ZF == 0
 all_exec();
 #undef JMPFLAG
 #undef instr
 
-#define instr jle
+#define instr jle	/* also jng */
 #define JMPFLAG cpu.ZF == 1 || cpu.SF != cpu.OF
 all_exec();
 #undef JMPFLAG
 #undef instr
 
-#define instr jl
+#define instr jl	/* also jnge */
 #define JMPFLAG cpu.SF != cpu.OF
 all_exec();
 #undef JMPFLAG
