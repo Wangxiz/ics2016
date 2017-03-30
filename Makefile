@@ -54,7 +54,8 @@ clean: clean-cpp
 ##### some convinient rules #####
 # USERPROG := obj/testcase/mov
 # USERPROG := obj/testcase/mov-c
-USERPROG := obj/testcase/add
+# USERPROG := obj/testcase/add
+USERPROG := obj/testcase/bit
 ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
