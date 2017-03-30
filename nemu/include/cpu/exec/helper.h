@@ -13,7 +13,7 @@
 
 #define make_instr_helper(type) \
 	make_helper(concat5(instr, _, type, _, SUFFIX)) { \
-		printf("cpu/exec/helper.EIP: 0x%08x\n", cpu.eip);\
+		printf("%s, cpu/exec/helper.EIP: 0x%08x\n", str(instr), cpu.eip);\
 		return idex(eip, concat4(decode_, type, _, SUFFIX), do_execute); \
 	}
 
