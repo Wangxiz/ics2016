@@ -3,14 +3,13 @@
 #define instr movsx
 
 static void do_execute() {
-	DATA_TYPE_S val;
 	if(op_src->val >> (op_src->size * 8 - 1) == 1) {
-		val = op_src->val | ((1 << (DATA_BYTE - op_src->size) * 8) - 1) << (op_src->size * 8);
+		op_src->val |= ((1 << (DATA_BYTE - op_src->size) * 8) - 1) << (op_src->size * 8);
 	}
 	else {
-		val = op_src->val & ((1 << (op_src->val * 8)) - 1);
+		op_src->val &= ((1 << (op_src->val * 8)) - 1);
 	}
-	OPERAND_W(op_dest, val);
+	OPERAND_W(op_dest, op_src->val);
 	print_asm_template2();
 }
 
