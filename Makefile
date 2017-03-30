@@ -68,7 +68,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/sum
 # USERPROG := obj/testcase/wanshu
 # USERPROG := obj/testcase/to-lower-case
-USERPROG := obj/testcase/switch
+# USERPROG := obj/testcase/switch
+USERPROG := obj/testcase/quick-sort
 ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
