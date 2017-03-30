@@ -1,7 +1,7 @@
 #include "cpu/exec/template-start.h"
 
 #define instr leave
-// tested
+
 static void do_execute() {
 	cpu.esp = cpu.ebp;
 	
