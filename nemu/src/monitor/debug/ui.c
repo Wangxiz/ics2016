@@ -67,6 +67,8 @@ static int cmd_info(char *args) {
 			printf("%s\t0x%08x\t%d\n", regsl[i], cpu.gpr[i]._32, cpu.gpr[i]._32);
 		}
 		printf("eip\t0x%08x\t%d\n", cpu.eip, cpu.eip);
+		printf("IF: %x\tCF: %x\tOF: %d\tPF: %d\n",cpu.IF, cpu.CF, cpu.OF, cpu.PF);
+		printf("ZF: %x\tSF: %d\tDF: %d\n",cpu.ZF, cpu.SF, cpu.DF);
 	}
 	else if(strcmp(arg, "w") == 0) {
 		print_wp();
