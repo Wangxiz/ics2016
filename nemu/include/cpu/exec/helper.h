@@ -11,11 +11,21 @@
 
 #define do_execute concat4(do_, instr, _, SUFFIX)
 
+#ifdef DEBUG_MY
+#define print_eip() printf("%s, cpu/exec/helper.EIP: 0x%08x\n", str(instr), cpu.eip)
+#else
+#define print_eip() do {} while(0);
+#endif
+
 #define make_instr_helper(type) \
 	make_helper(concat5(instr, _, type, _, SUFFIX)) { \
-		printf("%s, cpu/exec/helper.EIP: 0x%08x\n", str(instr), cpu.eip);\
+		print_eip();\
 		return idex(eip, concat4(decode_, type, _, SUFFIX), do_execute); \
 	}
+
+#ifdef DEBUG_MY
+#undef print_eip()
+#endif
 
 extern char assembly[];
 #ifdef DEBUG
