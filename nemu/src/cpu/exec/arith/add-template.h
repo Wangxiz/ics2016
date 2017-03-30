@@ -12,7 +12,7 @@ static void do_execute () {
 	ADD_CF(op_dest->val, op_src->val, val);
 	ADD_OF(op_dest->val, op_src->val, val);
 
-	print_asm_template2();
+//	print_asm_template2();
 }
 
 make_instr_helper(r2rm)
