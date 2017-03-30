@@ -25,4 +25,10 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
+#define instr jbe
+#define JMPFLAG cpu.ZF == 1 || cpu.CF == 1
+all_exec();
+#undef JMPFLAG
+#undef instr
+
 #include "cpu/exec/template-end.h"
