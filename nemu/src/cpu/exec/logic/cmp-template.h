@@ -2,7 +2,6 @@
 
 #define instr cmp
 	// tested
-
 static void do_execute () {
 	DATA_TYPE val = op_dest->val - op_src->val;
 
