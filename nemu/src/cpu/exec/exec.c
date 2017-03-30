@@ -238,6 +238,6 @@ make_helper(exec) {
 static make_helper(_2byte_esc) {
 	eip ++;
 	uint32_t opcode = instr_fetch(eip, 1);
-	ops_decoded.opcode = opcode | 0x100;
+	ops_decoded.opcode = opcode | 0x100;	// get lower 8 bits
 	return _2byte_opcode_table[opcode](eip) + 1; 
 }
