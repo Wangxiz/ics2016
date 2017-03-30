@@ -59,7 +59,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/fib
 # USERPROG := obj/testcase/pascal
 # USERPROG := obj/testcase/prime
-USERPROG := obj/testcase/leap-year
+# USERPROG := obj/testcase/leap-year
+USERPROG := obj/testcase/select-sort
 ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
