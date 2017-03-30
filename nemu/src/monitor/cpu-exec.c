@@ -69,7 +69,7 @@ void cpu_exec(volatile uint32_t n) {
 		printf("after :cpu-exec.EIP: 0x%08x\n", cpu.eip);
 
 		cpu.eip += instr_len;
-		// printf("next cpu-exec.EIP: 0x%08x\n", cpu.eip);
+		printf("next cpu-exec.EIP: 0x%08x\n", cpu.eip);
 
 #ifdef DEBUG
 		print_bin_instr(eip_temp, instr_len);
