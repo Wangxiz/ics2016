@@ -1,7 +1,7 @@
 #include "cpu/exec/template-start.h"
 
 #define instr sub
-
+// tested
 #if DATA_BYTE == 2 || DATA_BYTE == 4
 static void do_execute () {
 	DATA_TYPE val = op_dest->val - op_src->val;
