@@ -2,7 +2,7 @@
 
 #define instr cmp
 	// tested
-#if DATA_BYTE == 2 || DATA_BYTE == 4
+
 static void do_execute () {
 	DATA_TYPE val = op_dest->val - op_src->val;
 
@@ -15,7 +15,10 @@ static void do_execute () {
 	print_asm_template2();
 }
 
+#if DATA_BYTE == 2 || DATA_BYTE == 4
 make_instr_helper(si2rm)
 #endif
+
+make_instr_helper(r2rm)
 
 #include "cpu/exec/template-end.h"
