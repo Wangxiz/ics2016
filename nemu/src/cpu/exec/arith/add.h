@@ -2,8 +2,10 @@
 #define __ADD_H__
 
 make_helper(add_r2rm_b);
+make_helper(add_i2a_b);
 
 make_helper(add_si2rm_v);
 make_helper(add_r2rm_v);
+make_helper(add_i2a_v);
 
 #endif
