@@ -3,10 +3,9 @@
 #define instr push
 // tested
 static void do_execute() {
-	if(DATA_BYTE == 4) {	// push_r_l
-		cpu.esp -= 4;
-		MEM_W(cpu.esp, op_src->val);
-	}
+	cpu.esp -= DATA_BYTE;
+	MEM_W(cpu.esp, op_src->val);
+
 	print_asm_template1();
 }
 
