@@ -22,6 +22,7 @@ static inline int idex(swaddr_t eip, int (*decode)(swaddr_t), void (*execute) (v
 
 	/* len: the length of an instruction except opcode */
 	len = decode(eip + 1);
+	Log("len:%d\n", len);
 	// printf("len:%d\n", len);
 	execute();
 	return len + 1;	// "1" for opcode
