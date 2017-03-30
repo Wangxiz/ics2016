@@ -61,7 +61,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/prime
 # USERPROG := obj/testcase/leap-year
 # USERPROG := obj/testcase/select-sort
-USERPROG := obj/testcase/if-else
+# USERPROG := obj/testcase/if-else
+USERPROG := obj/testcase/gotbaha
 ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
