@@ -14,7 +14,7 @@
 #ifdef DEBUG_MY
 #define print_eip() printf("%s, cpu/exec/helper.EIP: 0x%08x\n", str(instr), cpu.eip)
 #else
-#define print_eip() do {} while(0);
+#define print_eip() do {} while(0)
 #endif
 
 #define make_instr_helper(type) \
