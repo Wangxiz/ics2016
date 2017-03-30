@@ -43,4 +43,10 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
+#define instr jl
+#define JMPFLAG cpu.SF != cpu.OF
+all_exec();
+#undef JMPFLAG
+#undef instr
+
 #include "cpu/exec/template-end.h"
