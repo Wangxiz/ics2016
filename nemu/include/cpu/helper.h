@@ -14,6 +14,7 @@ static inline uint32_t instr_fetch(swaddr_t addr, size_t len) {
 int len;
 
 /* Instruction Decode and EXecute */
+/* Used in cpu/exec/helper.h: make_instr_helper */
 static inline int idex(swaddr_t eip, int (*decode)(swaddr_t), void (*execute) (void)) {
 	/* eip is pointing to the opcode */
 	len = decode(eip + 1);

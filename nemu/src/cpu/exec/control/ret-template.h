@@ -1,7 +1,7 @@
 #include "cpu/exec/template-start.h"
 
 #define instr ret
-
+// tested
 static void do_execute() {
 	cpu.eip = POP_DWORD();
 
