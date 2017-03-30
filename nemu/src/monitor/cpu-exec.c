@@ -63,10 +63,10 @@ void cpu_exec(volatile uint32_t n) {
 		/* instr_len: the length of an instruction include opcode,
 		 * escape code is also included if have. */
 		
-		// printf("before :cpu-exec.EIP: 0x%08x\n", cpu.eip);
+		printf("before :cpu-exec.EIP: 0x%08x\n", cpu.eip);
 		int instr_len = exec(cpu.eip);
 
-		// printf("after :cpu-exec.EIP: 0x%08x\n", cpu.eip);
+		printf("after :cpu-exec.EIP: 0x%08x\n", cpu.eip);
 
 		cpu.eip += instr_len;
 		// printf("next cpu-exec.EIP: 0x%08x\n", cpu.eip);
