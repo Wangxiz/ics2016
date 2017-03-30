@@ -31,4 +31,10 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
+#define instr jne
+#define JMPFLAG cpu.ZF == 0
+all_exec();
+#undef JMPFLAG
+#undef instr
+
 #include "cpu/exec/template-end.h"
