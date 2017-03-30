@@ -11,12 +11,7 @@ static void do_execute () {
 		snprintf(op_src->str, OP_STR_SIZE, "$0x%x", cpu.eip + len + 1);
 	}
 	else {
-		// if(op_src->size == 2) {
-		// 	cpu.eip = op_src->val & 0x0000FFFF;
-		// }
-		// else {
-			cpu.eip = op_src->val - len - 1;
-		// }
+		cpu.eip = op_src->val - len - 1;
 	}
 	print_asm_template1();
 }
