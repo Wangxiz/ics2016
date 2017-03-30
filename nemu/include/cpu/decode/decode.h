@@ -55,6 +55,10 @@ make_helper(decode_n_b);
 make_helper(decode_n_w);
 make_helper(decode_n_l);
 
+make_helper(decode_rm_b2r_w);
+make_helper(decode_rm_b2r_l);
+make_helper(decode_rm_w2r_l);
+
 void write_operand_b(Operand *, uint8_t);
 void write_operand_w(Operand *, uint16_t);
 void write_operand_l(Operand *, uint32_t);
