@@ -62,14 +62,22 @@ void cpu_exec(volatile uint32_t n) {
 		 * instruction decode, and the actual execution. */
 		/* instr_len: the length of an instruction include opcode,
 		 * escape code is also included if have. */
-		
+
+#ifdef DEBUG_MY
 		printf("before :cpu-exec.EIP: 0x%08x\n", cpu.eip);
+#endif
+
 		int instr_len = exec(cpu.eip);
 
+#ifdef DEBUG_MY
 		printf("after :cpu-exec.EIP: 0x%08x\n", cpu.eip);
+#endif
 
 		cpu.eip += instr_len;
+
+#ifdef DEBUG_MY
 		printf("next cpu-exec.EIP: 0x%08x\n", cpu.eip);
+#endif
 
 #ifdef DEBUG
 		print_bin_instr(eip_temp, instr_len);
