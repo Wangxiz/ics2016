@@ -49,8 +49,15 @@
 #define UPDATE_EFLAGS_SF(val) cpu.SF = MSB(val)
 #define UPDATE_EFLAGS_ZF(val) cpu.ZF = (val == 0)
 
-#define SUB_CF(n, m) ((n < m) ? (cpu.CF = 1) : (cpu.CF = 0))
-#define SUB_OF(n, m, t) (((MSB(t) ^ MSB(n)) && (MSB(n) ^ MSB(m))) ? (cpu.OF = 1) : (cpu.OF = 0))
+#define SUB_CF(n, m) \
+		((n < m) ? (cpu.CF = 1) : (cpu.CF = 0))
+#define SUB_OF(n, m, t) \
+		(((MSB(t) ^ MSB(n)) && (MSB(n) ^ MSB(m))) ? (cpu.OF = 1) : (cpu.OF = 0))
+
+#define ADD_CF(n, m, t) \
+		(((t < n) || (t < m)) ? (cpu.CF = 1) : (cpu.CF = 0))
+#define ADD_OF(n, m, t) \
+		(((MSB(n) == MSB(m)) && ((MSB(n) != MSB(t)) || (MSB(m) != MSB(t)))) ? (cpu.OF = 1) : (cpu.OF = 0))
 
 #define SET_EFLAGS_CF(val) cpu.CF = val
 #define SET_EFLAGS_OF(val) cpu.OF = val

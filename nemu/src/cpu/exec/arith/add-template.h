@@ -4,7 +4,14 @@
 
 static void do_execute () {
 	DATA_TYPE val = op_dest->val + op_src->val;
-	MEM_W(op_dest->val, val);
+	OPERAND_W(op_dest, val);
+
+	UPDATE_EFLAGS_ZF(val);
+	UPDATE_EFLAGS_SF(val);
+	UPDATE_EFLAGS_PF(val);
+	ADD_CF(op_dest->val, op_src->val, val);
+	ADD_OF(op_dest->val, op_src->val, val);
+
 	print_asm_template2();
 }
 
