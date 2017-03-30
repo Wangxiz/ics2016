@@ -12,7 +12,7 @@ static void do_execute () {
 	}
 	else {
 		Log("op_src->val: %d, len: %d\n", op_src->val, len);
-		cpu.eip = op_src->val;
+		cpu.eip = op_src->val - len - 1;
 	}
 	print_asm_template1();
 }
