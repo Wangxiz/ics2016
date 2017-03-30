@@ -2,13 +2,13 @@
 
 #define instr call
 
-// len: defined in cpu/helper.h
+/* len: defined in cpu/helper.h */
 extern int len;
 
 static void do_execute() {
 	cpu.esp -= DATA_BYTE;
 	MEM_W(cpu.esp, cpu.eip + len);
-
+	printf("call: eip:0x%08x\n", cpu.eip);
 #ifdef DEBUG_MY
 	printf("ESP:%x\n", MEM_R(cpu.esp));
 #endif

@@ -1,6 +1,6 @@
 #include "cpu/exec/template-start.h"
 
-// len: defined in cpu/helper.h
+/* len: defined in cpu/helper.h */
 extern int len;
 // tested
 #define if_exec() {\

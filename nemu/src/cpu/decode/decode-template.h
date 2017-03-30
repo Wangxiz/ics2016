@@ -59,6 +59,7 @@ static int concat(decode_a_, SUFFIX) (swaddr_t eip, Operand *op) {
 	return 0;
 }
 
+/* get register from lower 3-bits of opcode. */
 /* eXX: eAX, eCX, eDX, eBX, eSP, eBP, eSI, eDI */
 static int concat3(decode_r_, SUFFIX, _internal) (swaddr_t eip, Operand *op) {
 	op->type = OP_TYPE_REG;
@@ -133,6 +134,8 @@ make_helper(concat(decode_i2rm_, SUFFIX)) {
  * eXX <- Iv 
  */
 make_helper(concat(decode_i2r_, SUFFIX)) {
+	/* set register encodeed in opcode as op_dest */
+	/* decode_r_internal using concat3(decode_r_, SUFFIX, _internal) */
 	decode_r_internal(eip, op_dest);
 	return decode_i(eip);
 }
