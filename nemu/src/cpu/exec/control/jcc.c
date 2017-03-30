@@ -15,3 +15,4 @@
 make_helper_v(je_si)
 make_helper_v(jbe_si)
 make_helper_v(jne_si)
+make_helper_v(jle_si)
