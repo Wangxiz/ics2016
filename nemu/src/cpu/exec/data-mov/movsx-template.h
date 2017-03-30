@@ -3,13 +3,26 @@
 #define instr movsx
 
 static void do_execute() {
-	if(op_src->val >> (op_src->size * 8 - 1) == 1) {
-		op_src->val |= ((1 << (DATA_BYTE - op_src->size) * 8) - 1) << (op_src->size * 8);
+	// if(op_src->val >> (op_src->size * 8 - 1) == 1) {
+	// 	op_src->val |= ((1 << (DATA_BYTE - op_src->size) * 8) - 1) << (op_src->size * 8);
+	// }
+	// else {
+	// 	Log("op_src->size: %d\n", op_src->size);
+	// 	op_src->val &= ((1 << (op_src->val * 8)) - 1);
+	// }
+
+	if(op_src->size == 1) {
+		if(DATA_BYTE == 2) {
+			op_src->val &= 0x00ff;
+		}
+		else {
+			op_src->val &= 0x000000ff;
+		}
 	}
 	else {
-		Log("op_src->size: %d\n", op_src->size);
-		op_src->val &= ((1 << (op_src->val * 8)) - 1);
+		op_src->val &= 0x0000ffff;
 	}
+//	Log("op_src->size: %d\n", op_src->size);
 	OPERAND_W(op_dest, op_src->val);
 	print_asm_template2();
 }
