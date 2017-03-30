@@ -7,6 +7,7 @@ static void do_execute() {
 		op_src->val |= ((1 << (DATA_BYTE - op_src->size) * 8) - 1) << (op_src->size * 8);
 	}
 	else {
+		Log("op_src->size: %d\n", op_src->size);
 		op_src->val &= ((1 << (op_src->val * 8)) - 1);
 	}
 	OPERAND_W(op_dest, op_src->val);
