@@ -17,7 +17,7 @@ int len;
 /* Used in cpu/exec/helper.h: make_instr_helper */
 static inline int idex(swaddr_t eip, int (*decode)(swaddr_t), void (*execute) (void)) {
 	/* eip is pointing to the opcode */
-	printf("cpu.EIP: 0x%08x\n", cpu.eip);
+	printf("cpu/helper.EIP: 0x%08x\n", cpu.eip);
 	len = decode(eip + 1);
 	execute();
 	return len + 1;	// "1" for opcode
