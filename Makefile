@@ -71,7 +71,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/switch
 # USERPROG := obj/testcase/quick-sort
 # USERPROG := obj/testcase/movsx
-USERPROG := obj/testcase/add-longlong
+# USERPROG := obj/testcase/add-longlong
+USERPROG := obj/testcase/bubble-sort
 ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
