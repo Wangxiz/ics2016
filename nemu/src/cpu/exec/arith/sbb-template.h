@@ -1,21 +1,15 @@
 #include "cpu/exec/template-start.h"
 
 #define instr sbb
-// tested
+
 static void do_execute () {
-	DATA_TYPE val;
-	if(op_src->size == 1 && op_dest->size >= 2) {
-		val = op_dest->val - ((DATA_TYPE_S)((int8_t)op_src->val) + cpu.CF);
-	}
-	else {
-		val = op_dest->val - (op_src->val + cpu.CF);
-	}
+	DATA_TYPE val = op_dest->val - (op_src->val + cpu.CF);
 	OPERAND_W(op_dest, val);
 
 	UPDATE_EFLAGS_ZF(val);
 	UPDATE_EFLAGS_SF(val);
 	UPDATE_EFLAGS_PF(val);
-	SUB_CF(op_dest->val, op_src->val);
+	SUB_CF(op_dest->val, (op_src->val + cpu.CF));
 	SUB_OF(op_dest->val, op_src->val, val);
 
 	print_asm_template2();
