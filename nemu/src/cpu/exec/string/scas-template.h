@@ -10,7 +10,7 @@ static void do_execute() {
 
 	DATA_TYPE val = swaddr_read(cpu.edi, DATA_BYTE);
 	DATA_TYPE val1;
-
+	Log("edi->val: 0x%2x\n", val);
 	if(DATA_BYTE == 1) {
 		op_src->reg = R_AL;
 		val1 = REG(R_AL) - val;
