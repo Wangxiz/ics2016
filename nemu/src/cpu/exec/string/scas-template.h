@@ -8,7 +8,7 @@ static void do_execute() {
 
 	snprintf(op_src->str, 11, "%%es:(%%edi),");
 
-	DATA_TYPE val = swaddr_read(cpu.esi, DATA_BYTE);
+	DATA_TYPE val = swaddr_read(cpu.edi, DATA_BYTE);
 	DATA_TYPE val1;
 
 	if(DATA_BYTE == 1) {
