@@ -71,14 +71,14 @@ clean: clean-cpp
 # USERPROG := obj/testcase/mov-c
 # USERPROG := obj/testcase/mov
 # USERPROG := obj/testcase/movsx
-# USERPROG := obj/testcase/mul-longlong **
+USERPROG := obj/testcase/mul-longlong
 # USERPROG := obj/testcase/pascal
 # USERPROG := obj/testcase/prime
 # USERPROG := obj/testcase/print-FLOAT **
 # USERPROG := obj/testcase/quadratic-eq **
 # USERPROG := obj/testcase/quick-sort
 # USERPROG := obj/testcase/select-sort
-USERPROG := obj/testcase/shuixianhua
+# USERPROG := obj/testcase/shuixianhua
 # USERPROG := obj/testcase/start
 # USERPROG := obj/testcase/string **
 # USERPROG := obj/testcase/struct **
