@@ -55,8 +55,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/mov
 # USERPROG := obj/testcase/mov-c
 # USERPROG := obj/testcase/add
-# USERPROG := obj/testcase/bit
-USERPROG := obj/testcase/fib
+USERPROG := obj/testcase/bit
+# USERPROG := obj/testcase/fib
 # USERPROG := obj/testcase/pascal
 # USERPROG := obj/testcase/prime
 # USERPROG := obj/testcase/leap-year
