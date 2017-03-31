@@ -63,8 +63,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/select-sort
 # USERPROG := obj/testcase/if-else
 # USERPROG := obj/testcase/gotbaha
-# USERPROG := obj/testcase/max
-USERPROG := obj/testcase/min3
+USERPROG := obj/testcase/max
+# USERPROG := obj/testcase/min3
 # USERPROG := obj/testcase/sum
 # USERPROG := obj/testcase/wanshu
 # USERPROG := obj/testcase/to-lower-case
