@@ -3,7 +3,7 @@
 #define instr sbb
 
 static void do_execute () {
-	DATA_TYPE val = op_dest->val - (op_src->val + cpu.CF);
+	DATA_TYPE val = (op_dest->val + cpu.CF) - op_src->val;
 	OPERAND_W(op_dest, val);
 
 	UPDATE_EFLAGS_ZF(val);
