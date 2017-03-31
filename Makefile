@@ -52,7 +52,7 @@ clean: clean-cpp
 
 
 ##### some convinient rules #####
-USERPROG := obj/testcase/mov
+# USERPROG := obj/testcase/mov
 # USERPROG := obj/testcase/mov-c
 # USERPROG := obj/testcase/add
 # USERPROG := obj/testcase/bit
@@ -71,6 +71,7 @@ USERPROG := obj/testcase/mov
 # USERPROG := obj/testcase/switch
 # USERPROG := obj/testcase/quick-sort
 # USERPROG := obj/testcase/movsx
+USERPROG := obj/testcase/add-longlong
 ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
