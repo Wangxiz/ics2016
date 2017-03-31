@@ -87,9 +87,6 @@ USERPROG := obj/testcase/fact
 # USERPROG := obj/testcase/switch
 # USERPROG := obj/testcase/to-lower-case
 # USERPROG := obj/testcase/wanshu
-
-
-USERPROG := obj/testcase/add-longlong
 ENTRY := $(USERPROG)
 
 entry: $(ENTRY)
