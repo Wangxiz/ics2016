@@ -5,6 +5,7 @@
 static void do_execute () {
 	DATA_TYPE val = op_dest->val - (op_src->val + cpu.CF);
 	OPERAND_W(op_dest, val);
+	Log("dest: 0x%08x\n", op_dest->val);
 	Log("val: 0x%08x\n", val);
 
 	UPDATE_EFLAGS_ZF(val);
