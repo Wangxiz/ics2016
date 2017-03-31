@@ -10,18 +10,20 @@ static void do_execute() {
 	// 	op_src->val &= ((1 << (op_src->val * 8)) - 1);
 	// }
 
-	if(op_src->size == 1) {
-		if(DATA_BYTE == 2) {
-			op_src->val &= 0x00ff;
-		}
-		else {
-			op_src->val &= 0x000000ff;
-		}
-	}
-	else {
-		op_src->val &= 0x0000ffff;
-	}
-	OPERAND_W(op_dest, op_src->val);
+	// if(op_src->size == 1) {
+	// 	if(DATA_BYTE == 2) {
+	// 		op_src->val &= 0x00ff;
+	// 	}
+	// 	else {
+	// 		op_src->val &= 0x000000ff;
+	// 	}
+	// }
+	// else {
+	// 	op_src->val &= 0x0000ffff;
+	// }
+
+	DATA_TYPE_S val = (DATA_TYPE_S)op_src->val;
+	OPERAND_W(op_dest, val);
 	print_asm_template2();
 }
 
