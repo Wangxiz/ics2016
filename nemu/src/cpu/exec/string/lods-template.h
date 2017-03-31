@@ -6,7 +6,7 @@ static void do_execute() {
 	op_src->type = op_dest->type = OP_TYPE_REG;
 	op_src->reg = R_ESI;
 
-	snprintf(op_src->str, 13, "%%ds:(%%esi),");
+	snprintf(op_src->str, 13, "%%ds:(%%esi)");
 	DATA_TYPE val = swaddr_read(cpu.esi, DATA_BYTE);
 
 	if(DATA_BYTE == 1) {
