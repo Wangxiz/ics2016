@@ -6,8 +6,12 @@ static void do_execute () {
 	DATA_TYPE result = op_dest->val ^ op_src->val;
 	OPERAND_W(op_dest, result);
 
-	/* TODO: Update EFLAGS. */
-	panic("please implement me");
+	SET_EFLAGS_CF(0);
+	SET_EFLAGS_OF(0);
+
+	UPDATE_EFLAGS_PF(result);
+	UPDATE_EFLAGS_ZF(result);
+	UPDATE_EFLAGS_SF(result);
 
 	print_asm_template2();
 }
