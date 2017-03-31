@@ -16,6 +16,7 @@ static void do_execute() {
 	}
 	else {
 		//op_src->val = (int32_t)((int16_t)op_src->val);
+		cpu.eip -= 2;
 		cpu.esp += op_src->val;
 		print_asm_template1();
 	}
