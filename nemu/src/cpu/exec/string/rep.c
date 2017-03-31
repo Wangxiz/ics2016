@@ -26,7 +26,7 @@ make_helper(rep) {
 				);
 
 			/* TODO: Jump out of the while loop if necessary. */
-			
+			Log("EIP: 0x%08x\n", eip);
 		}
 		len = 1;
 	}
