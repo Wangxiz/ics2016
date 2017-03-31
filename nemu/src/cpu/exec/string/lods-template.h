@@ -11,17 +11,17 @@ static void do_execute() {
 
 	if(DATA_BYTE == 1) {
 		op_dest->reg = R_AL;
-		cpu.gpr[0]._8[0]= val;
+		REG(R_AL) = val;
 		snprintf(op_dest->str, 4, "%%al");
 	}
 	else if(DATA_BYTE == 2) {
 		op_dest->reg = R_AX;
-		cpu.gpr[0]._16 = val;
+		REG(R_AX) = val;
 		snprintf(op_dest->str, 4, "%%ax");
 	}
 	else {
 		op_dest->reg = R_EAX;
-		cpu.gpr[0]._32 = val;
+		REG(R_EAX) = val;
 		snprintf(op_dest->str, 5, "%%eax");			
 	}
 
