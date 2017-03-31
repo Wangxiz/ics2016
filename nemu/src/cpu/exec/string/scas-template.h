@@ -18,7 +18,7 @@ static void do_execute() {
 		SUB_CF(val, REG(R_AL));
 		SUB_OF(val, REG(R_AL), val1);
 	
-		snprintf(op_dest->str, 3, "%%al");
+		snprintf(op_dest->str, 4, "%%al");
 	}
 	else if(DATA_BYTE == 2) {
 		op_src->reg = R_AX;
@@ -27,7 +27,7 @@ static void do_execute() {
 		SUB_CF(val, REG(R_AX));
 		SUB_OF(val, REG(R_AX), val1);
 
-		snprintf(op_dest->str, 3, "%%ax");
+		snprintf(op_dest->str, 4, "%%ax");
 	}
 	else {
 		op_src->reg = R_EAX;
@@ -36,7 +36,7 @@ static void do_execute() {
 		SUB_CF(val, REG(R_EAX));
 		SUB_OF(val, REG(R_EAX), val1);
 
-		snprintf(op_dest->str, 4, "%%eax");
+		snprintf(op_dest->str, 5, "%%eax");
 	}
 
 	UPDATE_EFLAGS_ZF(val1);
