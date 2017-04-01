@@ -61,6 +61,18 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
+#define instr jpe	/* also jp */
+#define JMPFLAG cpu.PF == 1
+all_exec();
+#undef JMPFLAG
+#undef instr
+
+#define instr jnp	/* also jpo */
+#define JMPFLAG cpu.PF == 0
+all_exec();
+#undef JMPFLAG
+#undef instr
+
 #define instr jl	/* also jnge */
 #define JMPFLAG cpu.SF != cpu.OF
 all_exec();
