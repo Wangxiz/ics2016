@@ -5,7 +5,6 @@ make_helper(exec);
 make_helper(rep) {
 	int len;
 	int count = 0;
-	int op = instr_fetch(eip, 1);
 	if(instr_fetch(eip + 1, 1) == 0xc3) {
 		/* repz ret */
 		exec(eip + 1);
@@ -28,26 +27,11 @@ make_helper(rep) {
 				);
 
 			/* TODO: Jump out of the while loop if necessary. */
-			// if((ops_decoded.opcode == 0xa6
-			//  || ops_decoded.opcode == 0xa7
-			//  || ops_decoded.opcode == 0xae
-			//  || ops_decoded.opcode == 0xaf) && cpu.ZF == 0)
-			// 	break;
-			// Log("EIP: 0x%08x\n", eip);
-
-		    if (   ops_decoded.opcode == 0xa6	    // cmpsb
-				|| ops_decoded.opcode == 0xa7	    // cmpsw
-				|| ops_decoded.opcode == 0xae	    // scasb
-				|| ops_decoded.opcode == 0xaf) {	// scasw
-                if (op == 0xf3) { // rep, repe
-    			    if (cpu.ZF == 0) break;
-                } else if (op == 0xf2) { // repne
-                    if (cpu.ZF == 1) break;
-                } else {
-                    panic("invalid rep op %02X", op);
-                }
-			}
-
+			if((ops_decoded.opcode == 0xa6
+			 || ops_decoded.opcode == 0xa7
+			 || ops_decoded.opcode == 0xae
+			 || ops_decoded.opcode == 0xaf) && cpu.ZF == 0)
+				break;
 		}
 		len = 1;
 	}
@@ -63,7 +47,6 @@ make_helper(rep) {
 
 make_helper(repnz) {
 	int count = 0;
-	int op = instr_fetch(eip, 1);
 	while(cpu.ecx) {
 		exec(eip + 1);
 		count ++;
@@ -75,24 +58,11 @@ make_helper(repnz) {
 			  );
 
 		/* TODO: Jump out of the while loop if necessary. */
-		// if((ops_decoded.opcode == 0xa6
-		//  || ops_decoded.opcode == 0xa7
-		//  || ops_decoded.opcode == 0xae
-		//  || ops_decoded.opcode == 0xaf) && cpu.ZF == 0)
-		// 	break;
-
-		    if (   ops_decoded.opcode == 0xa6	    // cmpsb
-				|| ops_decoded.opcode == 0xa7	    // cmpsw
-				|| ops_decoded.opcode == 0xae	    // scasb
-				|| ops_decoded.opcode == 0xaf) {	// scasw
-                if (op == 0xf3) { // rep, repe
-    			    if (cpu.ZF == 0) break;
-                } else if (op == 0xf2) { // repne
-                    if (cpu.ZF == 1) break;
-                } else {
-                    panic("invalid rep op %02X", op);
-                }
-			}
+		if((ops_decoded.opcode == 0xa6
+		 || ops_decoded.opcode == 0xa7
+		 || ops_decoded.opcode == 0xae
+		 || ops_decoded.opcode == 0xaf) && cpu.ZF == 1)
+			break;
 	}
 
 #ifdef DEBUG
