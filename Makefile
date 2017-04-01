@@ -60,13 +60,13 @@ clean: clean-cpp
 # USERPROG := obj/testcase/fib
 # USERPROG := obj/testcase/gotbaha
 # USERPROG := obj/testcase/hello-inline-asm **
-# USERPROG := obj/testcase/hello-str **
+USERPROG := obj/testcase/hello-str
 # USERPROG := obj/testcase/hello **
 # USERPROG := obj/testcase/if-else
 # USERPROG := obj/testcase/integral **
 # USERPROG := obj/testcase/leap-year
 # USERPROG := obj/testcase/matrix-mul-small
-USERPROG := obj/testcase/matrix-mul
+# USERPROG := obj/testcase/matrix-mul
 # USERPROG := obj/testcase/max
 # USERPROG := obj/testcase/min3
 # USERPROG := obj/testcase/mov-c
