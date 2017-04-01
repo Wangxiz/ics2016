@@ -10,6 +10,7 @@ make_helper(jge_si_b);	/* 0x7d ok */
 make_helper(jg_si_b);	/* 0x7f ok */
 make_helper(ja_si_b);	/* 0x77 ok */
 make_helper(js_si_b);	/* 0x78 ok */
+make_helper(jns_si_b);	/* 0x79 ok */
 
 make_helper(je_si_v);	/* 0x0f 0x84 ok */
 make_helper(jbe_si_v);	/* 0x0f 0x86 ok */
@@ -20,5 +21,6 @@ make_helper(jge_si_v);	/* 0x0f 0x8d ok */
 make_helper(jg_si_v);	/* 0x0f 0x8f ok */
 make_helper(ja_si_v);	/* 0x0f 0x87 ok */
 make_helper(js_si_v);	/* 0x0f 0x88 ok */
+make_helper(jns_si_v);	/* 0x0f 0x89 ok */
 
 #endif

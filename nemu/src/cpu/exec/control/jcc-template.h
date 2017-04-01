@@ -67,8 +67,14 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
-#define instr js	/* also jnbe */
+#define instr js
 #define JMPFLAG cpu.SF == 1
+all_exec();
+#undef JMPFLAG
+#undef instr
+
+#define instr jns
+#define JMPFLAG cpu.SF == 0
 all_exec();
 #undef JMPFLAG
 #undef instr
