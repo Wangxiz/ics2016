@@ -81,8 +81,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/shuixianhua
 # USERPROG := obj/testcase/start
 # USERPROG := obj/testcase/string
-USERPROG := obj/testcase/struct
-# USERPROG := obj/testcase/sub-longlong
+# USERPROG := obj/testcase/struct
+USERPROG := obj/testcase/sub-longlong
 # USERPROG := obj/testcase/sum
 # USERPROG := obj/testcase/switch
 # USERPROG := obj/testcase/to-lower-case
