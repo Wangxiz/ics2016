@@ -23,10 +23,7 @@ static void do_execute() {
 		cpu.edi = REG(R_EAX);
 		snprintf(op_src->str, 5, "%%eax");
 	}
-	uint32_t val = swaddr_read(cpu.esi, DATA_BYTE);
-	swaddr_write(cpu.edi, DATA_BYTE, val);
-
-	cpu.esi += ((cpu.DF == 0) ? +DATA_BYTE : -DATA_BYTE);
+	
 	cpu.edi += ((cpu.DF == 0) ? +DATA_BYTE : -DATA_BYTE);
 
 	print_asm_template2();
