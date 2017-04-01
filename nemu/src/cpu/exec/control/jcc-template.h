@@ -67,4 +67,10 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
+#define instr js	/* also jnbe */
+#define JMPFLAG cpu.SF == 1
+all_exec();
+#undef JMPFLAG
+#undef instr
+
 #include "cpu/exec/template-end.h"
