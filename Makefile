@@ -52,7 +52,7 @@ clean: clean-cpp
 
 
 ##### some convinient rules #####
-# USERPROG := obj/testcase/add-longlong
+USERPROG := obj/testcase/add-longlong
 # USERPROG := obj/testcase/add
 # USERPROG := obj/testcase/bit
 # USERPROG := obj/testcase/bubble-sort
@@ -80,7 +80,7 @@ clean: clean-cpp
 # USERPROG := obj/testcase/select-sort
 # USERPROG := obj/testcase/shuixianhua
 # USERPROG := obj/testcase/start
-USERPROG := obj/testcase/string
+# USERPROG := obj/testcase/string
 # USERPROG := obj/testcase/struct
 # USERPROG := obj/testcase/sub-longlong
 # USERPROG := obj/testcase/sum
