@@ -31,6 +31,12 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
+#define instr jb 	/* also jc jnae */
+#define JMPFLAG cpu.CF == 1
+all_exec();
+#undef JMPFLAG
+#undef instr
+
 #define instr je	/* also jz */
 #define JMPFLAG cpu.ZF == 1
 all_exec();

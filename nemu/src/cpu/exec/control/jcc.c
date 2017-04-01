@@ -14,6 +14,7 @@
 
 make_helper_v(jo_si)
 make_helper_v(jno_si)
+make_helper_v(jb_si)
 make_helper_v(jae_si)
 make_helper_v(je_si)
 make_helper_v(jne_si)
