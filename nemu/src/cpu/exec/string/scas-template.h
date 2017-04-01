@@ -15,8 +15,8 @@ static void do_execute() {
 		op_src->reg = R_AL;
 		val1 = REG(R_AL) - val;
 
-		SUB_CF(val, REG(R_AL));
-		SUB_OF(val, REG(R_AL), val1);
+		SUB_CF(REG(R_AL), val);
+		SUB_OF(REG(R_AL), val, val1);
 	
 		snprintf(op_dest->str, 4, "%%al");
 	}
@@ -24,8 +24,8 @@ static void do_execute() {
 		op_src->reg = R_AX;
 		val1 = REG(R_AX) - val;
 
-		SUB_CF(val, REG(R_AX));
-		SUB_OF(val, REG(R_AX), val1);
+		SUB_CF(REG(R_AX), val);
+		SUB_OF(REG(R_AX), val, val1);
 
 		snprintf(op_dest->str, 4, "%%ax");
 	}
@@ -33,8 +33,8 @@ static void do_execute() {
 		op_src->reg = R_EAX;
 		val1 = REG(R_EAX) - val;
 
-		SUB_CF(val, REG(R_EAX));
-		SUB_OF(val, REG(R_EAX), val1);
+		SUB_CF(REG(R_EAX), val);
+		SUB_OF(REG(R_EAX), val, val1);
 
 		snprintf(op_dest->str, 5, "%%eax");
 	}
