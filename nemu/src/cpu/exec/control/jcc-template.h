@@ -19,6 +19,18 @@ static void do_execute() { \
 } \
 make_instr_helper(si) 
 
+#define instr jo
+#define JMPFLAG cpu.OF == 1
+all_exec();
+#undef JMPFLAG
+#undef instr
+
+#define instr jno
+#define JMPFLAG cpu.OF == 0
+all_exec();
+#undef JMPFLAG
+#undef instr
+
 #define instr je	/* also jz */
 #define JMPFLAG cpu.ZF == 1
 all_exec();
@@ -75,6 +87,12 @@ all_exec();
 
 #define instr jns
 #define JMPFLAG cpu.SF == 0
+all_exec();
+#undef JMPFLAG
+#undef instr
+
+#define instr jae	/*also jnb jnc */
+#define JMPFLAG cpu.CF == 0
 all_exec();
 #undef JMPFLAG
 #undef instr

@@ -6,9 +6,6 @@ static void do_execute () {
 	DATA_TYPE val = op_src->val + 1;
 	OPERAND_W(op_src, val);
 
-	/* TODO: Update EFLAGS. */
-	// panic("please implement me");
-
 	UPDATE_EFLAGS_ZF(val);
 	UPDATE_EFLAGS_SF(val);
 	UPDATE_EFLAGS_PF(val);

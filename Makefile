@@ -62,8 +62,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/hello-inline-asm **
 # USERPROG := obj/testcase/hello-str
 # USERPROG := obj/testcase/hello **
-# USERPROG := obj/testcase/if-else
-USERPROG := obj/testcase/integral
+USERPROG := obj/testcase/if-else
+# USERPROG := obj/testcase/integral
 # USERPROG := obj/testcase/leap-year
 # USERPROG := obj/testcase/matrix-mul-small
 # USERPROG := obj/testcase/matrix-mul
