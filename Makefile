@@ -71,8 +71,8 @@ clean: clean-cpp
 # USERPROG := obj/testcase/mov-c
 # USERPROG := obj/testcase/mov
 # USERPROG := obj/testcase/movsx
-USERPROG := obj/testcase/mul-longlong
-# USERPROG := obj/testcase/pascal
+# USERPROG := obj/testcase/mul-longlong
+USERPROG := obj/testcase/pascal
 # USERPROG := obj/testcase/prime
 # USERPROG := obj/testcase/print-FLOAT **
 # USERPROG := obj/testcase/quadratic-eq **
