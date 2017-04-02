@@ -90,6 +90,7 @@ uint32_t find_var(char* arg) {
 			return symtab[i].st_value;
 		}
 	}
+	Log("FALG:%d\n", flag);
 	flag = false;
 	return 0;
 }
