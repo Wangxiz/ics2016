@@ -37,14 +37,14 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
-#define instr je	/* also jz */
-#define JMPFLAG cpu.ZF == 1
+#define instr jae	/*also jnb jnc */
+#define JMPFLAG cpu.CF == 0
 all_exec();
 #undef JMPFLAG
 #undef instr
 
-#define instr jbe	/* also jna */
-#define JMPFLAG cpu.ZF == 1 || cpu.CF == 1
+#define instr je	/* also jz */
+#define JMPFLAG cpu.ZF == 1
 all_exec();
 #undef JMPFLAG
 #undef instr
@@ -55,8 +55,26 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
-#define instr jle	/* also jng */
-#define JMPFLAG cpu.ZF == 1 || cpu.SF != cpu.OF
+#define instr jbe	/* also jna */
+#define JMPFLAG cpu.ZF == 1 || cpu.CF == 1
+all_exec();
+#undef JMPFLAG
+#undef instr
+
+#define instr ja	/* also jnbe */
+#define JMPFLAG cpu.ZF == 0 && cpu.CF == 0
+all_exec();
+#undef JMPFLAG
+#undef instr
+
+#define instr js
+#define JMPFLAG cpu.SF == 1
+all_exec();
+#undef JMPFLAG
+#undef instr
+
+#define instr jns
+#define JMPFLAG cpu.SF == 0
 all_exec();
 #undef JMPFLAG
 #undef instr
@@ -85,32 +103,14 @@ all_exec();
 #undef JMPFLAG
 #undef instr
 
+#define instr jle	/* also jng */
+#define JMPFLAG cpu.ZF == 1 || cpu.SF != cpu.OF
+all_exec();
+#undef JMPFLAG
+#undef instr
+
 #define instr jg	/* also jnle */
 #define JMPFLAG cpu.ZF == 0 && cpu.SF == cpu.OF
-all_exec();
-#undef JMPFLAG
-#undef instr
-
-#define instr ja	/* also jnbe */
-#define JMPFLAG cpu.ZF == 0 && cpu.CF == 0
-all_exec();
-#undef JMPFLAG
-#undef instr
-
-#define instr js
-#define JMPFLAG cpu.SF == 1
-all_exec();
-#undef JMPFLAG
-#undef instr
-
-#define instr jns
-#define JMPFLAG cpu.SF == 0
-all_exec();
-#undef JMPFLAG
-#undef instr
-
-#define instr jae	/*also jnb jnc */
-#define JMPFLAG cpu.CF == 0
 all_exec();
 #undef JMPFLAG
 #undef instr
