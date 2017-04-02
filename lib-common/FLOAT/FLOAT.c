@@ -58,8 +58,6 @@ FLOAT f2F(float a) {
 	 * stack. How do you retrieve it to another variable without
 	 * performing arithmetic operations on it directly?
 	 */
-
-	// nemu_assert(0);
 	int int_float = *(int*)&a;
 	int frac = int_float &((1 << 23) - 1);
 	int exp = (int_float >> 23) & ((1 << 8) - 1) -127;
@@ -73,12 +71,12 @@ FLOAT f2F(float a) {
 		}
 		frac <<= 1;
     }
-    return (sign == 1 ? -result : result);
+    if (sign != 0) result = (~result) + 1;
+	return (FLOAT)(result);
 }
 
 FLOAT Fabs(FLOAT a) {
-	int s = a >> 31;
-	return (s == 0) ? a : -a;
+	return (a >= 0) ? a : -a;
 }
 
 /* Functions below are already implemented */
