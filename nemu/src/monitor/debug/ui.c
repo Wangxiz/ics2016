@@ -7,6 +7,8 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
+bool flag;
+
 void cpu_exec(uint32_t);
 
 uint32_t my_atoi(char *arg);

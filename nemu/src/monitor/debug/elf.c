@@ -8,6 +8,8 @@ static char *strtab = NULL;
 static Elf32_Sym *symtab = NULL;
 static int nr_symtab_entry;
 
+extern bool flag;
+
 void load_elf_tables(int argc, char *argv[]) {
 	int ret;
 	Assert(argc == 2, "run NEMU with format 'nemu [program]'");
@@ -81,3 +83,13 @@ void load_elf_tables(int argc, char *argv[]) {
 	fclose(fp);
 }
 
+uint32_t find_var(char* arg) {
+	int i;
+	for(i = 0; i < nr_symtab_entry; ++i) {
+		if(strcmp(arg, strtab + symtab[i].st_name) == 0) {
+			return symtab[i].st_value;
+		}
+	}
+	flag = false;
+	return 0;
+}

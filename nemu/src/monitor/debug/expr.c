@@ -10,7 +10,7 @@ enum {
 	NOTYPE = 256,
 
 	/* TODO: Add more token types */
-	DEC, HEX, EQ, NE, LE, GE, LT, GT, AND, OR, NOT, REG, NS, DR
+	DEC, HEX, EQ, NE, LE, GE, LT, GT, AND, OR, NOT, REG, NS, DR, VAR
 };
 
 static struct rule {
@@ -44,13 +44,15 @@ static struct rule {
 	{"!", NOT, 2},						// not				<-
 	{"\\$eax|\\$edx|\\$ecx|\\$ebx|\\$ebp|\\$esi|\\$edi|\\$esp|\\$ax|\\$dx|\\$cx|\\$bx|\\$bp|\\$si|\\$di|\\$sp|\\$ah|\\$dh|\\$ch|\\$bh|\\$al|\\$dl|\\$cl|\\$bl|\\$eip", REG, 1},		// registers	->
 	{"-", NS, 2},						// negative sign	<-
-	{"\\*", DR, 2}						// dereference		<-
+	{"\\*", DR, 2},						// dereference		<-
+	{"[_a-zA-Z][_a-zA-Z0-9]*", VAR, 1}
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
 
 static regex_t re[NR_REGEX];
 
+extern bool flag;
 /* Rules are used for many times.
  * Therefore we compile them only once before any usage.
  */
@@ -117,7 +119,7 @@ static bool make_token(char *e) {
 							tokens[nr_token].op_level = 2;
 						}
 						break;
-					case DEC: case HEX: case REG:
+					case DEC: case HEX: case REG: case VAR:
 						strncpy(tokens[nr_token].str, substr_start, substr_len);
 						tokens[nr_token].str[substr_len] = '\0';
 						break;
@@ -197,6 +199,8 @@ uint32_t my_htoi(char *arg) {
 	return val;
 }
 
+extern uint32_t find_var(char* arg);
+
 uint32_t eval(int p, int q) {
 	if(p > q) {
 		/* Bad expression */
@@ -228,6 +232,9 @@ uint32_t eval(int p, int q) {
 		}
 		else if(tokens[p].type == HEX) {
 			return my_htoi(tokens[p].str + 2);
+		}
+		else if(tokens[p].type == VAR) {
+			return find_var(tokens[p].str);
 		}
 		return val;
 	}
