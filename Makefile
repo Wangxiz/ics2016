@@ -63,7 +63,7 @@ clean: clean-cpp
 # USERPROG := obj/testcase/hello-str
 # USERPROG := obj/testcase/hello **
 # USERPROG := obj/testcase/if-else
-# USERPROG := obj/testcase/integral
+USERPROG := obj/testcase/integral
 # USERPROG := obj/testcase/leap-year
 # USERPROG := obj/testcase/matrix-mul-small
 # USERPROG := obj/testcase/matrix-mul
@@ -76,7 +76,7 @@ clean: clean-cpp
 # USERPROG := obj/testcase/pascal
 # USERPROG := obj/testcase/prime
 # USERPROG := obj/testcase/print-FLOAT **
-USERPROG := obj/testcase/quadratic-eq
+# USERPROG := obj/testcase/quadratic-eq
 # USERPROG := obj/testcase/quick-sort
 # USERPROG := obj/testcase/select-sort
 # USERPROG := obj/testcase/shuixianhua
