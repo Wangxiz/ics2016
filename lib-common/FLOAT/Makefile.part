@@ -9,18 +9,16 @@ $(FLOAT): $(FLOAT_A_OBJ)
 	ar r $@ $^
 
 # TODO: complete the following rules
-
+# $(CC) -c $(LIB_COMMON_DIR)/FLOAT/FLOAT.c -o $(FLOAT_O) $(FLOAT_CFLAGS) $(FLOAT_INC)
+# $(CC) -c $(LIB_COMMON_DIR)/FLOAT/FLOAT_vfprintf.c -o $(FLOAT_VFPRINTF_O) $(FLOAT_CFLAGS) $(FLOAT_INC)
 # FLOAT_FLAGS := -m32 -O2 -fno-builtin -c
 FLOAT_FLAGS :=-m32 -O2 -fno-builtin -c -fno-stack-protector -U_FORTIFY_SOURCE -march=i386
 FLOAT_INC := -I$(LIB_COMMON_DIR)
 
 $(FLOAT_O): $(LIB_COMMON_DIR)/FLOAT/FLOAT.c
 	@mkdir -p obj/$(LIB_COMMON_DIR)/FLOAT &&\
-	# $(CC) -c $(LIB_COMMON_DIR)/FLOAT/FLOAT.c -o $(FLOAT_O) $(FLOAT_CFLAGS) $(FLOAT_INC)
 	$(CC) $(FLOAT_CFLAGS) $(FLOAT_INC) $(LIB_COMMON_DIR)/FLOAT/FLOAT.c -o $(FLOAT_O)
 	
 $(FLOAT_VFPRINTF_O): $(LIB_COMMON_DIR)/FLOAT/FLOAT_vfprintf.c
 	@mkdir -p obj/$(LIB_COMMON_DIR)/FLOAT &&\
-	# $(CC) -c $(LIB_COMMON_DIR)/FLOAT/FLOAT_vfprintf.c -o $(FLOAT_VFPRINTF_O) $(FLOAT_CFLAGS) $(FLOAT_INC)
 	$(CC) $(FLOAT_CFLAGS) $(FLOAT_INC) $(LIB_COMMON_DIR)/FLOAT/FLOAT_vfprintf.c -o $(FLOAT_VFPRINTF_O)
-
