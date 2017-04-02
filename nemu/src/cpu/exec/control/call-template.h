@@ -4,7 +4,7 @@
 
 /* len: defined in cpu/helper.h */
 extern int len;
-// tested
+
 static void do_execute() {
 	cpu.esp -= DATA_BYTE;
 	MEM_W(cpu.esp, cpu.eip + len);
