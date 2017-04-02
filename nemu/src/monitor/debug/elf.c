@@ -87,6 +87,7 @@ uint32_t find_var(char* arg) {
 	int i;
 	for(i = 0; i < nr_symtab_entry; ++i) {
 		if(strcmp(arg, strtab + symtab[i].st_name) == 0) {
+			flag = true;
 			return symtab[i].st_value;
 		}
 	}
