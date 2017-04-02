@@ -92,6 +92,7 @@ uint32_t find_var(char* arg) {
 		}
 	}
 	flag = false;
-	Log("FALG:%d\n", flag);
+	printf("%s: No such variable!\n", arg);
+	// Log("FALG:%d\n", flag);
 	return 0;
 }
