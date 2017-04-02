@@ -10,7 +10,8 @@ static inline int F2int(FLOAT a) {
 }
 
 static inline FLOAT int2F(int a) {
-	Assert((a >= -(2 << 15)) && (a < (2 << 15)), "\033[1;31mThis integer overflow the scope of FLOAT!\033[0m");
+	nemu_assert((a >= -(2 << 15)) && (a < (2 << 15)));
+	// Assert((a >= -(2 << 15)) && (a < (2 << 15)), "\033[1;31mThis integer overflow the scope of FLOAT!\033[0m");
 	return a << 16;
 }
 
@@ -19,7 +20,8 @@ static inline FLOAT F_mul_int(FLOAT a, int b) {
 }
 
 static inline FLOAT F_div_int(FLOAT a, int b) {
-	Assert(b != 0, "\033[1;31mThe divisor is 0!\033[0m");
+	nemu_assert(b != 0);
+	// Assert(b != 0, "\033[1;31mThe divisor is 0!\033[0m");
 	return a / b;
 }
 
