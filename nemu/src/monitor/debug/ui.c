@@ -7,7 +7,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-bool flag;
+bool flag = true;
 
 void cpu_exec(uint32_t);
 
