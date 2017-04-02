@@ -73,10 +73,7 @@ FLOAT f2F(float a) {
 		}
 		frac <<= 1;
     }
-    if(sign == 1) {
-        result = (~result) + 1;
-    }
-    return result;
+    return (sign == 1 ? -result : result);
 }
 
 FLOAT Fabs(FLOAT a) {
