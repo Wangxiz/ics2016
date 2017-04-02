@@ -1,8 +1,24 @@
 #include "FLOAT.h"
 
 FLOAT F_mul_F(FLOAT a, FLOAT b) {
-	nemu_assert(0);
-	return 0;
+	// int s1 = (a >> 31);
+	// int s2 = (b >> 31);
+	
+	// if(s1 == 1) a = -a;
+	// if(s2 == 1) b = -b;
+
+	// unsigned int a1 = (a >> 16);
+	// unsigned int b1 = (b >> 16);
+
+	// unsigned int a0 = a & 0xFFFF;
+	// unsigned int b0 = b & 0xFFFF;
+
+	// unsigned int c0, c1, c2, c3;
+
+	// c0 = a0 * b0;
+	// c1 = 
+
+	return (a * b) >> 16;
 }
 
 FLOAT F_div_F(FLOAT a, FLOAT b) {
@@ -23,9 +39,13 @@ FLOAT F_div_F(FLOAT a, FLOAT b) {
 	 * It is OK not to use the template above, but you should figure
 	 * out another way to perform the division.
 	 */
-
-	nemu_assert(0);
-	return 0;
+	long long bcs = a << 16;
+	int low_32 = bcs & 0xFFFFFFFF;
+	int high_32 = (bcs >> 32) & 0xFFFFFFFF;
+	FLOAT result;
+	int yushu;
+	asm volatile ("idiv %2" : "=a"(result), "=d"(yushu) : "r"(b), "a"(low_32), "d"(high_32));
+	return result;
 }
 
 FLOAT f2F(float a) {
@@ -39,13 +59,28 @@ FLOAT f2F(float a) {
 	 * performing arithmetic operations on it directly?
 	 */
 
-	nemu_assert(0);
-	return 0;
+	// nemu_assert(0);
+	int int_float = *(int*)&a;
+	int frac = int_float &((1 << 23) - 1);
+	int exp = (int_float >> 23) & ((1 << 8) - 1) -127;
+	int sign = int_float >> 31;
+
+	int result = 1, i;
+	for(i = 1; i < exp + 16; ++ i) {
+		result = (result << 1) + ((frac & (1 << 22)) >> 22);
+		if(result < 0) {
+			return 0x80000000u;
+		}
+		frac <<= 1;
+    }
+    if(sign == 1) {
+        result = (~result) + 1;
+    }
+    return result;
 }
 
 FLOAT Fabs(FLOAT a) {
-	nemu_assert(0);
-	return 0;
+	return (a > 0) ? a : -a;
 }
 
 /* Functions below are already implemented */
