@@ -10,14 +10,14 @@ $(FLOAT): $(FLOAT_A_OBJ)
 
 # TODO: complete the following rules
 
-FLOAT_FLAGS := -m32 -O2 -fno-builtin -fno-builtin-powl -fno-builtin-sqrtl
+FLOAT_FLAGS := -m32 -O2 -fno-builtin -c
 FLOAT_INC := -I$(LIB_COMMON_DIR)
 
 $(FLOAT_O): $(LIB_COMMON_DIR)/FLOAT/FLOAT.c
 	@mkdir -p obj/$(LIB_COMMON_DIR)/FLOAT &&\
-	$(CC) -c $(LIB_COMMON_DIR)/FLOAT/FLOAT.c -o $(FLOAT_O) $(FLOAT_CFLAGS) $(FLOAT_INC)
+	$(CC) -o $@ $< $(FLOAT_CFLAGS) $(FLOAT_INC)
 	
 $(FLOAT_VFPRINTF_O): $(LIB_COMMON_DIR)/FLOAT/FLOAT_vfprintf.c
 	@mkdir -p obj/$(LIB_COMMON_DIR)/FLOAT &&\
-	$(CC) -c $(LIB_COMMON_DIR)/FLOAT/FLOAT_vfprintf.c -o $(FLOAT_VFPRINTF_O) $(FLOAT_CFLAGS) $(FLOAT_INC)
+	$(CC) -o $@ $< $(FLOAT_CFLAGS) $(FLOAT_INC)
 
