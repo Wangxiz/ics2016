@@ -52,7 +52,7 @@ static struct rule {
 
 static regex_t re[NR_REGEX];
 
-extern bool flag;
+// extern bool flag;
 /* Rules are used for many times.
  * Therefore we compile them only once before any usage.
  */
