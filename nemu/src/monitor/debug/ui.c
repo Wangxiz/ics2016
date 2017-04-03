@@ -37,10 +37,12 @@ void print_bt() {
 	printf("No\tebp\t\tprev_ebp\teip\t\tret_addr\targ1\t\targ2\t\targ3\t\targ4\t\tname\n");
 	while(ebp != 0) {
 		prev_ebp = swaddr_read(ebp, 4);
+		ret_addr = swaddr_read(ebp + 4, 4);
 		args[0] = swaddr_read(ebp + 8, 4);
 		args[1] = swaddr_read(ebp + 12, 4);	
 		args[2] = swaddr_read(ebp + 16, 4);
 		args[3] = swaddr_read(ebp + 20, 4);
+		if(!find_fun(eip, func_name)) return;
 		printf("%d\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t%s\n", no, ebp, prev_ebp, eip, ret_addr, args[0], args[1], args[2], args[3], func_name);
 		ebp = prev_ebp;
 		eip = ret_addr;
