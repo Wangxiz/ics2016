@@ -4,13 +4,11 @@ enum {
     OF, SF, ZF, PF, CF
 };
 
-void clear(char flags[])
-{
+void clear(char flags[]) {
     flags[OF] = flags[SF] = flags[ZF] = flags[PF] = flags[CF] = 0;
 }
 
-int pack(char flags[])
-{
+int pack(char flags[]) {
     int ret = 0;
     ret |= ((int) flags[OF]) << 11;
     ret |= ((int) flags[SF]) << 7;
@@ -20,8 +18,7 @@ int pack(char flags[])
     return ret;
 }
 
-int test(int a, int b, char flags[], int g1, int g2)
-{
+int test(int a, int b, char flags[], int g1, int g2) {
     int ret;
     __asm__ __volatile__ (
         "mov %3, %%edx\n\t" // output array
@@ -4176,14 +4173,13 @@ short fdata[] = {
 0x081,0x085,0x081,0x081,0x085,0x081,0x085,0x085,0x081,0x081,0x085,0x085,0x081,0x085,0x081,0x081
 };
 
-int main()
-{
+int main() {
     int i, j;
     int r, f;
     int g1, g2;
     char flags[5];
     
-    for (i = 0; i <= 0xff; i++)
+    for (i = 0; i <= 0xff; i++) {
         for (j = 0; j <= 0xff; j++) {
             g1 = get_garbage();
             g2 = get_garbage();
@@ -4193,7 +4189,6 @@ int main()
             nemu_assert(r == ((i + j) & 0xff));
             nemu_assert(f == fdata[i * 256 + j]);
         }
-
-    HIT_GOOD_TRAP;
+    }
     return 0;
 }
