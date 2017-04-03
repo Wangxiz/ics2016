@@ -56,8 +56,9 @@ clean: clean-cpp
 # USERPROG := obj/testcase/add
 # USERPROG := obj/testcase/and_or_xor_test_cmp
 # USERPROG := obj/testcase/bad
-USERPROG := obj/testcase/bad2
+# USERPROG := obj/testcase/bad2
 # USERPROG := obj/testcase/bit
+USERPROG := obj/testcase/bittest_reg
 # USERPROG := obj/testcase/bubble-sort
 # USERPROG := obj/testcase/fact
 # USERPROG := obj/testcase/fib
