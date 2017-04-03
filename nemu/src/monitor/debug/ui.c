@@ -43,7 +43,7 @@ void print_bt() {
 		args[2] = swaddr_read(ebp + 16, 4);
 		args[3] = swaddr_read(ebp + 20, 4);
 		if(!find_fun(eip, func_name)) return;
-		printf("%d\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t%s\n", no, ebp, prev_ebp, eip, ret_addr, args[0], args[1], args[2], args[3], func_name);
+		printf("\033[1;34m%d\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t%s\033[0m\n", no, ebp, prev_ebp, eip, ret_addr, args[0], args[1], args[2], args[3], func_name);
 		ebp = prev_ebp;
 		eip = ret_addr;
 		no++;
