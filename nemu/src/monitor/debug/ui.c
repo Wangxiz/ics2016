@@ -18,6 +18,37 @@ void new_wp(char* exp);
 void free_wp(int index);
 void print_wp();
 
+extern bool find_fun(uint32_t addr, char* fun_name);
+
+void print_bt() {
+	uint32_t ebp = cpu.ebp;
+	uint32_t eip = cpu.eip;
+	char func_name[32];
+	int no = 0;
+
+	swaddr_t prev_ebp;
+	swaddr_t ret_addr;
+	uint32_t args[4];
+
+	if(!find_fun(eip, func_name)) {
+		printf("No stack!\n");
+		return;
+	}
+	printf("No\tebp\t\tprev_ebp\teip\t\tret_addr\targ1\t\targ2\t\targ3\t\targ4\t\tname\n");
+	while(ebp != 0) {
+		prev_ebp = swaddr_read(ebp, 4);
+		args[0] = swaddr_read(ebp + 8, 4);
+		args[1] = swaddr_read(ebp + 12, 4);	
+		args[2] = swaddr_read(ebp + 16, 4);
+		args[3] = swaddr_read(ebp + 20, 4);
+		printf("%d\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t0x%08x\t%s\n", no, ebp, prev_ebp, eip, ret_addr, args[0], args[1], args[2], args[3], func_name);
+		ebp = prev_ebp;
+		eip = ret_addr;
+		no++;
+	}
+
+}
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
 	static char *line_read = NULL;
@@ -137,6 +168,12 @@ static int cmd_d(char *args) {
 	return 0;
 }
 
+static int cmd_bt(char *args) {
+	assert(args == NULL);
+	print_bt();
+	return 0;
+}
+
 static int cmd_help(char *args);
 
 static struct {
@@ -154,7 +191,8 @@ static struct {
 	{ "p", "Expression evaluation", cmd_p},
 	{ "x", "Scan memory", cmd_x},
 	{ "w", "Set a watch point", cmd_w},
-	{ "d", "Delete a watch point", cmd_d}
+	{ "d", "Delete a watch point", cmd_d},
+	{ "bt", "Print stack frames list", cmd_bt}
 };
 
 #define NR_CMD (sizeof(cmd_table) / sizeof(cmd_table[0]))

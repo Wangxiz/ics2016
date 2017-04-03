@@ -95,3 +95,14 @@ uint32_t find_var(char* arg) {
 	printf("\033[1;31m%s: No such variable!\033[0m\n", arg);
 	return 0;
 }
+
+bool find_fun(uint32_t addr, char* fun_name) {
+	int i;
+	for(i = 0; i < nr_symtab_entry; ++i) {
+		if(addr >= symtab[i].st_value && addr < symtab[i].st_value + symtab[i].st_size) {
+			strcpy(fun_name, symtab[i].st_name + strtab);
+			return true;
+		}
+	}
+	return false;
+}
