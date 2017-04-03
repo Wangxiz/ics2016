@@ -15,6 +15,7 @@ int pack(char flags[]) {
     ret |= ((int) flags[ZF]) << 6;
     ret |= ((int) flags[PF]) << 2;
     ret |= ((int) flags[CF]);
+    set_bp();
     return ret;
 }
 
