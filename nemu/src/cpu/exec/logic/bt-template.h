@@ -3,7 +3,6 @@
 #define instr bt
 
 static inline void do_execute () {
-
 	uint8_t val = op_src->val;
 #if DATA_BYTE == 2
     val &= 15;
@@ -12,7 +11,7 @@ static inline void do_execute () {
 #else
     panic("invalid data_byte");
 #endif
-
+    
     if (op_dest->type == OP_TYPE_MEM) {
         // when dest op is mem operand
         // it's a different thing and a lot harder to implement
