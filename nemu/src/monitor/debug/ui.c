@@ -34,7 +34,7 @@ void print_bt() {
 		printf("No stack!\n");
 		return;
 	}
-	printf("No\tebp\t\tprev_ebp\teip\t\tret_addr\targ1\t\targ2\t\targ3\t\targ4\t\tname\n");
+	printf("\033[1;31mNo\tebp\t\tprev_ebp\teip\t\tret_addr\targ1\t\targ2\t\targ3\t\targ4\t\tname\033[0m\n");
 	while(ebp != 0) {
 		prev_ebp = swaddr_read(ebp, 4);
 		ret_addr = swaddr_read(ebp + 4, 4);
