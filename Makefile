@@ -53,14 +53,14 @@ clean: clean-cpp
 
 ##### some convinient rules #####
 # USERPROG := obj/testcase/add-longlong
-# USERPROG := obj/testcase/add
+USERPROG := obj/testcase/add
 # USERPROG := obj/testcase/and_or_xor_test_cmp
 # USERPROG := obj/testcase/bad
 # USERPROG := obj/testcase/bad2
 # USERPROG := obj/testcase/bit
 # USERPROG := obj/testcase/bittest_reg
 # USERPROG := obj/testcase/bubble-sort
-USERPROG := obj/testcase/eflags_byte_add_jcc
+# USERPROG := obj/testcase/eflags_byte_add_jcc
 # USERPROG := obj/testcase/eflags_byte_add_setcc
 # USERPROG := obj/testcase/fact
 # USERPROG := obj/testcase/fib
