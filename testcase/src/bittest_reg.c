@@ -72,10 +72,10 @@ int data[] = {
 };
 
 int len = sizeof(data) / sizeof(data[0]);
+int i, base, offset;
 
 int main()
-{
-    int i, base, offset;
+{    
     int ret_l;
     int ret_reg2r_l;
     int ret_w;
