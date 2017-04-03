@@ -53,7 +53,8 @@ clean: clean-cpp
 
 ##### some convinient rules #####
 # USERPROG := obj/testcase/add-longlong
-USERPROG := obj/testcase/add
+# USERPROG := obj/testcase/add
+USERPROG := obj/testcase/and_or_xor_test_cmp
 # USERPROG := obj/testcase/bit
 # USERPROG := obj/testcase/bubble-sort
 # USERPROG := obj/testcase/fact
