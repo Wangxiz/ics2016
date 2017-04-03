@@ -4,7 +4,14 @@
 
 static inline void do_execute () {
 
-	DATA_TYPE val = op_src->val;
+	uint8_t val = op_src->val;
+#if DATA_BYTE == 2
+    val &= 15;
+#elif DATA_BYTE == 4
+    val &= 31;
+#else
+    panic("invalid data_byte");
+#endif
 
     if (op_dest->type == OP_TYPE_MEM) {
         // when dest op is mem operand
