@@ -60,7 +60,7 @@ clean: clean-cpp
 # USERPROG := obj/testcase/bit
 # USERPROG := obj/testcase/bittest_reg
 # USERPROG := obj/testcase/bubble-sort
-USERPROG := obj/testcase/eflags_byte_add_cmovcc
+USERPROG := obj/testcase/eflags_byte_add_jcc
 # USERPROG := obj/testcase/fact
 # USERPROG := obj/testcase/fib
 # USERPROG := obj/testcase/gotbaha
