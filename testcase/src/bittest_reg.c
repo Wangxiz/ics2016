@@ -9,22 +9,19 @@
 */
 
 
-int naive_bt_l(int base, int offset)
-{
+int naive_bt_l(int base, int offset) {
 	unsigned char val = offset;
     val &= 31;
 	return !!(base & (1 << val));
 }
 
-int naive_bt_w(int base, int offset)
-{
+int naive_bt_w(int base, int offset) {
 	unsigned char val = offset;
     val &= 15;
 	return !!(base & (1 << val));
 }
 
-int asm_bt_reg2r_l(int base, int offset)
-{
+int asm_bt_reg2r_l(int base, int offset) {
     int ret = 0;
     __asm__ __volatile__ (
     "clc\n\t"
@@ -44,8 +41,7 @@ int asm_bt_reg2r_l(int base, int offset)
     return ret;
 }
 
-int asm_bt_reg2r_w(int base, int offset)
-{
+int asm_bt_reg2r_w(int base, int offset) {
     int ret = 0;
     __asm__ __volatile__ (
     "clc\n\t"
@@ -74,8 +70,7 @@ int data[] = {
 int len = sizeof(data) / sizeof(data[0]);
 int i, base, offset;
 
-int main()
-{    
+int main() {
     int ret_l;
     int ret_reg2r_l;
     int ret_w;
