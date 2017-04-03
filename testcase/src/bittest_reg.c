@@ -88,7 +88,5 @@ int main() {
             nemu_assert(ret_w == ret_reg2r_w);
         }
     }
-    
-    HIT_GOOD_TRAP;
     return 0;
 }
