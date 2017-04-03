@@ -9,7 +9,7 @@ static void do_execute() {
 	else {
 		cpu.edx = 0;
 	}
-	if(DATA_BYTE == 2) print_asm("cwtlw");
+	if(DATA_BYTE == 2) print_asm("cltdw");
 	else print_asm("cltdl");
 }
 
